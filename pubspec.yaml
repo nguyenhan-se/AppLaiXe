@@ -34,6 +34,9 @@ dependencies:
   fluttericon: ^2.0.0
   responsive_framework: ^0.1.7
 
+  dropdown_button2: ^1.4.0
+  datetime_picker_formfield: ^2.0.0
+
   firebase_auth: ^3.3.11
   firebase_core: ^1.14.0
   flutterfire_ui: ^0.4.0
@@ -55,7 +58,6 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   derry: ^1.4.3
 
-
 ## Install derry from https://pub.dev/packages/derry and run derry build, derry watch, derry gen
 scripts: derry.yaml
 
@@ -74,7 +76,7 @@ colors:
 import_sorter:
   comments: true # Optional, defaults to true
   # ignored_files: # Optional, defaults to []
-    # - \/lib\/*
+  # - \/lib\/*
 flutter:
   uses-material-design: true
   generate: true

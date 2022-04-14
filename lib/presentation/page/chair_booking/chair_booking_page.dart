@@ -12,6 +12,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_boilerplate_riverpod/core/utils/extensions/context_extensions.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
 import 'custom_chips_list.dart';
+import 'filter_journey.dart';
 import 'purchase_seats_button.dart';
 import 'seat_color_indicators.dart';
 import 'seats_area.dart';
@@ -22,7 +23,7 @@ import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.
 class ChairBookingPage extends HookConsumerWidget {
   const ChairBookingPage({Key? key}) : super(key: key);
 
-  static const _seatSize = 50.0;
+  static const _seatSize = 30.0;
   static const _seatGap = 10.0;
 
   double getMaxGridHeight(int numOfRows) {
@@ -35,7 +36,6 @@ class ChairBookingPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final theater = showSeatingModel.theater;
     final minScreenWidth = context.screenWidth;
     var screenWidth = getMaxScreenWidth(6);
     screenWidth = max(screenWidth, minScreenWidth);
@@ -46,13 +46,16 @@ class ChairBookingPage extends HookConsumerWidget {
         title: const Text('Đặt ghế'),
         centerTitle: true,
       ),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 10),
+              FilterJourney(
+                  onSubmit: (date, journey) =>
+                      print('search here =====> $date - $journey')),
               const SizedBox(height: 5),
               Expanded(
                 child: AnimatedSwitcher(
