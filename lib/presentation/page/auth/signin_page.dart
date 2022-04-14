@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
+    show AuthState, authProvider;
+
 // Project imports:
-import 'package:flutter_boilerplate_riverpod/core/provider/authentication/auth_provider.dart';
 
 class SignInPage extends HookConsumerWidget {
   const SignInPage({Key? key}) : super(key: key);

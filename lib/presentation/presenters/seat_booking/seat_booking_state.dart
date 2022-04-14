@@ -1,6 +1,7 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+// Project imports:
 import '../../../domain/entities/seat.dart';
 
 part 'seat_booking_state.freezed.dart';

@@ -1,6 +1,8 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/seat.dart';
+// Project imports:
+import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
 import 'seat_widget.dart';
 
 class SeatsArea extends StatelessWidget {
@@ -10,6 +12,7 @@ class SeatsArea extends StatelessWidget {
   final ScrollController screenScrollController;
 
   const SeatsArea({
+    Key? key,
     required this.maxGridHeight,
     required this.seatSize,
     required this.seatGap,
@@ -20,7 +23,7 @@ class SeatsArea extends StatelessWidget {
     required this.blocked,
     required this.booked,
     required this.screenScrollController,
-  });
+  }) : super(key: key);
 
   bool isMissing(Seat seat) => missing.contains(seat);
 

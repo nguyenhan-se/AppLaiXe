@@ -11,13 +11,15 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 // Project imports:
-import 'package:flutter_boilerplate_riverpod/core/provider/app_config/app_config_provider.dart';
 import 'core/di/init_di.dart';
 import 'core/gen/l10n.dart';
 import 'core/logics/theme/app_theme.dart';
-import 'core/provider/router_provider.dart';
 import 'core/utils/logger.dart';
 import 'firebase_options.dart';
+
+// Project imports:
+import 'presentation/presenters/presenters.dart'
+    show appConfigProvider, routerProvider;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

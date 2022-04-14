@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'package:flutter_boilerplate_riverpod/core/provider/authentication/auth_provider.dart';
 import 'package:flutter_boilerplate_riverpod/core/route/route.dart';
+
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
+    show AuthState, authProvider;
 
 class AppStartPage extends StatefulHookConsumerWidget {
   const AppStartPage({Key? key}) : super(key: key);

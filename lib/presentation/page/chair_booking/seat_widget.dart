@@ -1,10 +1,15 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate_riverpod/core/provider/seat_booking/seat_booking_provider.dart';
+
+// Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-//Providers
-import '../../domain/entities/seat.dart';
+// Project imports:
+import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
+
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
+    show seatBookingProvider;
 
 class SeatWidget extends StatefulHookConsumerWidget {
   final Seat seat;

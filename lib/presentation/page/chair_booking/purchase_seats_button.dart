@@ -1,9 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate_riverpod/core/provider/seat_booking/seat_booking_provider.dart';
+
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-//Widgets
-import '../widgets/custom_text_button.dart';
+// Project imports:
+import 'package:flutter_boilerplate_riverpod/presentation/widgets/custom_text_button.dart';
+
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
+    show seatBookingProvider;
 
 class PurchaseSeatsButton extends StatelessWidget {
   const PurchaseSeatsButton({Key? key}) : super(key: key);
