@@ -10,13 +10,9 @@
 //
 // ignore_for_file: type=lint
 
-// Flutter imports:
+import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:flutter/material.dart' as _i3;
 
-// Package imports:
-import 'package:auto_route/auto_route.dart' as _i2;
-
-// Project imports:
 import '../../presentation/page/pages.dart' as _i1;
 
 class AppRouter extends _i2.RootStackRouter {
@@ -44,6 +40,14 @@ class AppRouter extends _i2.RootStackRouter {
     ChairBookingRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.ChairBookingPage());
+    },
+    PassengerRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.PassengerPage());
+    },
+    ConfirmBookingRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.ConfirmBookingPage());
     }
   };
 
@@ -53,7 +57,9 @@ class AppRouter extends _i2.RootStackRouter {
         _i2.RouteConfig(AppStartRoute.name, path: '/start'),
         _i2.RouteConfig(HomeRoute.name, path: '/home'),
         _i2.RouteConfig(SignInRoute.name, path: '/signin'),
-        _i2.RouteConfig(ChairBookingRoute.name, path: '/chair-booking')
+        _i2.RouteConfig(ChairBookingRoute.name, path: '/chair-booking'),
+        _i2.RouteConfig(PassengerRoute.name, path: '/passenger-page'),
+        _i2.RouteConfig(ConfirmBookingRoute.name, path: '/confirm-booking-page')
       ];
 }
 
@@ -96,4 +102,21 @@ class ChairBookingRoute extends _i2.PageRouteInfo<void> {
       : super(ChairBookingRoute.name, path: '/chair-booking');
 
   static const String name = 'ChairBookingRoute';
+}
+
+/// generated route for
+/// [_i1.PassengerPage]
+class PassengerRoute extends _i2.PageRouteInfo<void> {
+  const PassengerRoute() : super(PassengerRoute.name, path: '/passenger-page');
+
+  static const String name = 'PassengerRoute';
+}
+
+/// generated route for
+/// [_i1.ConfirmBookingPage]
+class ConfirmBookingRoute extends _i2.PageRouteInfo<void> {
+  const ConfirmBookingRoute()
+      : super(ConfirmBookingRoute.name, path: '/confirm-booking-page');
+
+  static const String name = 'ConfirmBookingRoute';
 }

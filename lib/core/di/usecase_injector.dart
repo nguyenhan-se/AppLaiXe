@@ -14,4 +14,7 @@ Future<void> setupUseCaseDependencies(GetIt getIt) async {
       AuthChangeUseCase(getIt<IAuthRepository>()));
   getIt.registerSingleton<GetUserUseCase>(
       GetUserUseCase(getIt<IAuthRepository>()));
+
+  getIt.registerSingleton<GetDestinationsByCodeUseCase>(
+      GetDestinationsByCodeUseCase());
 }

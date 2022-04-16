@@ -1,6 +1,7 @@
 // Package imports:
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_boilerplate_riverpod/domain/usecases/destination/destination_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

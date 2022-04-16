@@ -63,40 +63,35 @@ class SeatsArea extends StatelessWidget {
           const SizedBox(width: 10),
 
           //Seats
-          NotificationListener<OverscrollIndicatorNotification>(
-            onNotification: _onGlowNotification,
-            child: Flexible(
-              child: NotificationListener<ScrollNotification>(
-                child: GridView.builder(
-                  itemCount: numOfRows * seatsPerRow,
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.only(right: 20),
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: seatSize,
-                    crossAxisSpacing: seatGap,
-                    mainAxisSpacing: seatGap,
-                  ),
-                  itemBuilder: (ctx, i) {
-                    final seat = Seat(
-                      seatRow: String.fromCharCode(i % numOfRows + 65),
-                      seatNumber: i ~/ numOfRows,
-                    );
-                    if (isMissing(seat)) {
-                      return const SizedBox.shrink();
-                    } else if (isBlocked(seat) || isBooked(seat)) {
-                      return const DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Color(0xFF5A5A5A),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8),
-                          ),
-                        ),
-                      );
-                    }
-                    return SeatWidget(seat: seat);
-                  },
-                ),
+          Flexible(
+            child: GridView.builder(
+              itemCount: numOfRows * seatsPerRow,
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(right: 20),
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: seatSize,
+                crossAxisSpacing: seatGap,
+                mainAxisSpacing: seatGap,
               ),
+              itemBuilder: (ctx, i) {
+                final seat = Seat(
+                  seatRow: String.fromCharCode(i % numOfRows + 65),
+                  seatNumber: i ~/ numOfRows,
+                );
+                if (isMissing(seat)) {
+                  return const SizedBox.shrink();
+                } else if (isBlocked(seat) || isBooked(seat)) {
+                  return const DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Color(0xFF5A5A5A),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                  );
+                }
+                return SeatWidget(seat: seat);
+              },
             ),
           ),
         ],

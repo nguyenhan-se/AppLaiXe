@@ -1,28 +1,28 @@
 // Dart imports:
 import 'dart:math';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:flutter_boilerplate_riverpod/core/utils/extensions/context_extensions.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
+    show seatBookingProvider;
+
 import 'custom_chips_list.dart';
 import 'purchase_seats_button.dart';
 import 'seat_color_indicators.dart';
 import 'seats_area.dart';
 
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
-    show seatBookingProvider;
-
 class ChairBookingPage extends HookConsumerWidget {
   const ChairBookingPage({Key? key}) : super(key: key);
 
-  static const _seatSize = 50.0;
+  static const _seatSize = 30.0;
   static const _seatGap = 10.0;
 
   double getMaxGridHeight(int numOfRows) {
@@ -35,7 +35,6 @@ class ChairBookingPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final theater = showSeatingModel.theater;
     final minScreenWidth = context.screenWidth;
     var screenWidth = getMaxScreenWidth(6);
     screenWidth = max(screenWidth, minScreenWidth);
@@ -46,13 +45,13 @@ class ChairBookingPage extends HookConsumerWidget {
         title: const Text('Đặt ghế'),
         centerTitle: true,
       ),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 10),
               const SizedBox(height: 5),
               Expanded(
                 child: AnimatedSwitcher(
@@ -74,7 +73,7 @@ class ChairBookingPage extends HookConsumerWidget {
                         Seat(seatRow: 'A', seatNumber: 2),
                         Seat(seatRow: 'B', seatNumber: 2),
                         Seat(seatRow: 'C', seatNumber: 2),
-                        Seat(seatRow: 'D', seatNumber: 2)
+                        Seat(seatRow: 'D', seatNumber: 2),
                       ],
                       blocked: const [],
                       booked: const [
