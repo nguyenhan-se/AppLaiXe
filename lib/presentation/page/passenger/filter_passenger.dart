@@ -4,25 +4,34 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 
 // Project imports:
 import 'package:flutter_boilerplate_riverpod/presentation/widgets/widgets.dart';
 
-final List<String> journey = [
-  'Lào Cai - Hà Nội',
-  'Hà Giang - Hà Nội',
+final List<Destination> destinations = [
+  Destination.empty().copyWith(
+    code: 'HN-HG',
+    from: 'Hà Nội',
+    to: 'Hà Giang',
+  ),
+  Destination.empty().copyWith(
+    code: 'HG-HN',
+    from: 'Hà Giang',
+    to: 'Hà Nội',
+  ),
 ];
 
-class FilterJourney extends StatelessWidget {
-  FilterJourney({
+class FilterPassenger extends StatelessWidget {
+  FilterPassenger({
     Key? key,
     required this.onSubmit,
   }) : super(key: key);
 
   final Function onSubmit;
-  final _journey = useState('Hà Giang - Hà Nội');
+  final _journey = useState('HN-HG');
   final _dateStart = useState(DateTime.now());
 
   @override
@@ -61,12 +70,6 @@ class FilterJourney extends StatelessWidget {
               onChanged: (date) => _dateStart.value = date as DateTime,
             ),
             const SizedBox(height: 16),
-            FloatTextField(
-              readOnly: true,
-              controller: TextEditingController()..text = 'HG-HN-19-20:00',
-              labelText: 'Chuyến xe',
-            ),
-            const SizedBox(height: 16),
             DropdownButtonHideUnderline(
               child: DropdownButtonFormField2(
                 decoration: InputDecoration(
@@ -91,11 +94,11 @@ class FilterJourney extends StatelessWidget {
                 openWithLongPress: true,
                 customItemsIndexes: const [3],
                 customItemsHeight: 8,
-                items: journey
+                items: destinations
                     .map((item) => DropdownMenuItem<String>(
-                          value: item,
+                          value: item.code,
                           child: Text(
-                            item,
+                            '${item.from} - ${item.to}',
                           ),
                         ))
                     .toList(),

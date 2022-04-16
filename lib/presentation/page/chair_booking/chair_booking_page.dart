@@ -1,24 +1,23 @@
 // Dart imports:
 import 'dart:math';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
 // Project imports:
 import 'package:flutter_boilerplate_riverpod/core/utils/extensions/context_extensions.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
+    show seatBookingProvider;
+
 import 'custom_chips_list.dart';
-import 'filter_journey.dart';
 import 'purchase_seats_button.dart';
 import 'seat_color_indicators.dart';
 import 'seats_area.dart';
-
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
-    show seatBookingProvider;
 
 class ChairBookingPage extends HookConsumerWidget {
   const ChairBookingPage({Key? key}) : super(key: key);
@@ -53,9 +52,6 @@ class ChairBookingPage extends HookConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FilterJourney(
-                  onSubmit: (date, journey) =>
-                      print('search here =====> $date - $journey')),
               const SizedBox(height: 5),
               Expanded(
                 child: AnimatedSwitcher(
@@ -77,7 +73,7 @@ class ChairBookingPage extends HookConsumerWidget {
                         Seat(seatRow: 'A', seatNumber: 2),
                         Seat(seatRow: 'B', seatNumber: 2),
                         Seat(seatRow: 'C', seatNumber: 2),
-                        Seat(seatRow: 'D', seatNumber: 2)
+                        Seat(seatRow: 'D', seatNumber: 2),
                       ],
                       blocked: const [],
                       booked: const [
