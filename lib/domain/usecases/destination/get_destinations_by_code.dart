@@ -60,7 +60,6 @@ class GetDestinationsByCodeUseCase
 
   @override
   call({required params}) {
-    print("come here baby ======> $params");
     return listDestination.where((element) => element.code == params).toList();
   }
 }

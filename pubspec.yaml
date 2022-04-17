@@ -34,7 +34,6 @@ dependencies:
   fluttericon: ^2.0.0
   responsive_framework: ^0.1.7
   date_format: ^2.0.6
-
   dropdown_button2: ^1.4.0
   datetime_picker_formfield: ^2.0.0
 

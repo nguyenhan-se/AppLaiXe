@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/ticket_booking/ticket_booking_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
+
+import '../user_booking/provider/user_form_provider.dart';
 
 class TicketView extends HookConsumerWidget {
   const TicketView({
@@ -11,6 +14,8 @@ class TicketView extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ticketBookingState = ref.watch(ticketBookingProvider);
     final destination = ticketBookingState.destination;
+    final currencyFormatter = NumberFormat.currency(locale: 'vi');
+
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
       child: Column(
@@ -148,14 +153,14 @@ class TicketView extends HookConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      '${destination.dateForm}h',
+                      '${destination.dateTo}h',
                       style: const TextStyle(
                           fontSize: 18,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      '${destination.dateTo}h',
+                      '${destination.dateForm}h',
                       style: const TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -170,21 +175,6 @@ class TicketView extends HookConsumerWidget {
                     Text(
                       ticketBookingState.departureFormat,
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    Row(
-                      children: const <Widget>[
-                        Text(
-                          "Flight No : ",
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
-                        ),
-                        Text(
-                          "23",
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                      ],
                     ),
                   ],
                 ),
@@ -252,28 +242,54 @@ class TicketView extends HookConsumerWidget {
                     bottomLeft: Radius.circular(24),
                     bottomRight: Radius.circular(24))),
             child: Column(
-              children: const [
-                _ListTile(
-                  icon: Icons.supervised_user_circle,
-                  leftTitle: "Họ tên",
-                  rightTitle: "Nguyễn Thế Hưng",
-                ),
-                _ListTile(
-                  icon: Icons.phone,
-                  leftTitle: "SDT",
-                  rightTitle: "0944458635",
-                ),
-                SizedBox(height: 4),
+              children: [
+                Consumer(builder: (ctx, ref, _) {
+                  final name = ref.watch(userFormProvider).name;
+                  return _ListTile(
+                    icon: Icons.supervised_user_circle,
+                    leftTitle: "Họ tên",
+                    rightTitle: name,
+                  );
+                }),
+                const SizedBox(height: 4),
+                Consumer(builder: (ctx, ref, _) {
+                  final phone = ref.watch(userFormProvider).phone;
+                  return _ListTile(
+                    icon: Icons.phone,
+                    leftTitle: "SDT",
+                    rightTitle: phone,
+                  );
+                }),
+                const SizedBox(height: 4),
+                Consumer(builder: (ctx, ref, _) {
+                  final startPoint = ref.watch(userFormProvider).startPoint;
+                  return _ListTile(
+                    icon: Icons.location_on,
+                    leftTitle: "Điểm đón",
+                    rightTitle: startPoint,
+                  );
+                }),
+                const SizedBox(height: 4),
+                Consumer(builder: (ctx, ref, _) {
+                  final endPoint = ref.watch(userFormProvider).endPoint;
+                  return _ListTile(
+                    icon: Icons.location_on,
+                    leftTitle: "Điểm đến",
+                    rightTitle: endPoint,
+                  );
+                }),
+                const SizedBox(height: 4),
                 _ListTile(
                   icon: Icons.chair,
                   leftTitle: "Số lượng",
-                  rightTitle: "240.000 đ",
+                  rightTitle: "${ticketBookingState.seats.length}",
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 _ListTile(
                   icon: Icons.attach_money_outlined,
                   leftTitle: "Tổng",
-                  rightTitle: "240.000 đ",
+                  rightTitle:
+                      currencyFormatter.format(ticketBookingState.totalPrice),
                 ),
               ],
             ),
