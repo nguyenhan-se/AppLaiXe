@@ -1,15 +1,11 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-// Project imports:
-import 'package:flutter_boilerplate_riverpod/core/gen/l10n.dart';
-
+import 'package:flutter_boilerplate_riverpod/core/route/route.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
     show appConfigProvider, authProvider, todosProvider;
+// Package imports:
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final counterProvider = StateProvider((ref) => 0);
 
@@ -29,57 +25,27 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final appConfigNotifier = ref.watch(appConfigProvider.notifier);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Counter example'),
-        automaticallyImplyLeading: false,
-      ),
-      body: WillPopScope(
-        onWillPop: () async => false,
-        child: Center(
-          child: Column(
-            children: [
-              Text(S.of(context).simpleText),
-              Consumer(builder: (context, ref, _) {
-                final appConfigState = ref.watch(appConfigProvider);
-                final appConfigEvents = ref.watch(appConfigProvider.notifier);
-                return CupertinoSwitch(
-                  value: appConfigState.isDarkMode,
-                  onChanged: (isDark) => appConfigEvents.themeTogged(isDark),
-                );
-              }),
-              ElevatedButton(
-                onPressed: () =>
-                    appConfigNotifier.localeChanged(const Locale('en')),
-                child: const Text('En'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  appConfigNotifier.localeChanged(const Locale('vi'));
-                },
-                child: const Text('Vi'),
-              ),
-              Consumer(builder: (context, ref, _) {
-                final count = ref.watch(counterProvider);
-                return Text('$count');
-              }),
-              Consumer(builder: (context, ref, _) {
-                return ElevatedButton(
-                  onPressed: () => ref.read(authProvider.notifier).signOut(),
-                  child: const Text('Logout'),
-                );
-              }),
-              // const Expanded(child: TodosResponse())
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.read(counterProvider.notifier).state++,
-        child: const Icon(Icons.add),
-      ),
+    return AutoTabsScaffold(
+      routes: [
+        const MainsTab(),
+        SettingsTab(),
+      ],
+      bottomNavigationBuilder: (_, tabsRouter) {
+        return BottomNavigationBar(
+          currentIndex: tabsRouter.activeIndex,
+          onTap: tabsRouter.setActiveIndex,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.airport_shuttle_outlined),
+              label: 'Đặt xe',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Danh sách vé',
+            ),
+          ],
+        );
+      },
     );
   }
 }

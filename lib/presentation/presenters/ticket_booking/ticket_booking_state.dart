@@ -18,5 +18,5 @@ class TicketBookingState with _$TicketBookingState {
 
   String get departureFormat => formatDate(departure, [yyyy, '-', mm, '-', d]);
 
-  double get totalPrice => destination.price * seats.length;
+  int get totalPrice => destination.price * seats.length;
 }

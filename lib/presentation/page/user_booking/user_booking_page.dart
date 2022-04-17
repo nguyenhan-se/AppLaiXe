@@ -30,79 +30,108 @@ class UserBookingPage extends HookConsumerWidget {
                   );
                 }),
               ),
-              Expanded(
-                child: ContainerLegend(
-                  title: 'Thông tin cá nhân',
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Consumer(builder: (ctx, ref, _) {
-                            final state = ref.watch(userFormProvider);
-                            return FloatTextField(
-                              initialValue: state.phone,
-                              labelText: 'SDT',
-                              keyboardType: TextInputType.number,
-                              onChanged: (value) => ref
-                                  .read(userFormProvider.notifier)
-                                  .phoneChanged(value),
-                              errorText: state.validatePhone,
-                            );
-                          }),
-                          const SizedBox(height: 8),
-                          Consumer(builder: (ctx, ref, _) {
-                            final state = ref.watch(userFormProvider);
-                            return FloatTextField(
-                              initialValue: state.name,
-                              labelText: 'Họ tên',
-                              onChanged: (value) => ref
-                                  .read(userFormProvider.notifier)
-                                  .nameChanged(value),
-                              errorText: state.validateName,
-                            );
-                          }),
-                          const SizedBox(height: 8),
-                          Consumer(builder: (ctx, ref, _) {
-                            final state = ref.watch(userFormProvider);
-                            return FloatTextField(
-                              initialValue: state.startPoint,
-                              labelText: 'Địa chỉ đón',
-                              onChanged: (value) => ref
-                                  .read(userFormProvider.notifier)
-                                  .startPointChanged(value),
-                              errorText: state.validateStartPoint,
-                            );
-                          }),
-                          const SizedBox(height: 8),
-                          Consumer(builder: (ctx, ref, _) {
-                            final state = ref.watch(userFormProvider);
+              ContainerLegend(
+                title: 'Thông tin vé',
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+                  child: Column(
+                    children: [
+                      Consumer(builder: (ctx, ref, _) {
+                        final destination =
+                            ref.watch(ticketBookingProvider).destination;
+                        return FloatTextField(
+                          initialValue: destination.price.toString(),
+                          labelText: 'Giá vé',
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) {
+                            if (value.isEmpty) {
+                              ref
+                                  .read(ticketBookingProvider.notifier)
+                                  .destinationChanged(
+                                      destination.copyWith(price: 200000));
+                              return;
+                            }
+                            ref
+                                .read(ticketBookingProvider.notifier)
+                                .destinationChanged(destination.copyWith(
+                                    price: int.parse(value)));
+                          },
+                          errorText: destination.validatePrice,
+                        );
+                      }),
+                    ],
+                  ),
+                ),
+              ),
+              ContainerLegend(
+                title: 'Thông tin cá nhân',
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Consumer(builder: (ctx, ref, _) {
+                        final state = ref.watch(userFormProvider);
+                        return FloatTextField(
+                          initialValue: state.phone,
+                          labelText: 'SDT',
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) => ref
+                              .read(userFormProvider.notifier)
+                              .phoneChanged(value),
+                          errorText: state.validatePhone,
+                        );
+                      }),
+                      const SizedBox(height: 8),
+                      Consumer(builder: (ctx, ref, _) {
+                        final state = ref.watch(userFormProvider);
+                        return FloatTextField(
+                          initialValue: state.name,
+                          labelText: 'Họ tên',
+                          onChanged: (value) => ref
+                              .read(userFormProvider.notifier)
+                              .nameChanged(value),
+                          errorText: state.validateName,
+                        );
+                      }),
+                      const SizedBox(height: 8),
+                      Consumer(builder: (ctx, ref, _) {
+                        final state = ref.watch(userFormProvider);
+                        return FloatTextField(
+                          initialValue: state.startPoint,
+                          labelText: 'Địa chỉ đón',
+                          onChanged: (value) => ref
+                              .read(userFormProvider.notifier)
+                              .startPointChanged(value),
+                          errorText: state.validateStartPoint,
+                        );
+                      }),
+                      const SizedBox(height: 8),
+                      Consumer(builder: (ctx, ref, _) {
+                        final state = ref.watch(userFormProvider);
 
-                            return FloatTextField(
-                              initialValue: state.endPoint,
-                              labelText: 'Điểm đến',
-                              onChanged: (value) => ref
-                                  .read(userFormProvider.notifier)
-                                  .endPointChanged(value),
-                              errorText: state.validateEndPoint,
-                            );
-                          }),
-                          const SizedBox(height: 8),
-                          Consumer(builder: (ctx, ref, _) {
-                            final note = ref.watch(userFormProvider).note;
-                            return FloatTextField(
-                              initialValue: note,
-                              maxLines: 3,
-                              labelText: 'Ghi chú',
-                              onChanged: (value) => ref
-                                  .read(userFormProvider.notifier)
-                                  .noteChanged(value),
-                            );
-                          }),
-                        ],
-                      ),
-                    ),
+                        return FloatTextField(
+                          initialValue: state.endPoint,
+                          labelText: 'Điểm đến',
+                          onChanged: (value) => ref
+                              .read(userFormProvider.notifier)
+                              .endPointChanged(value),
+                          errorText: state.validateEndPoint,
+                        );
+                      }),
+                      const SizedBox(height: 8),
+                      Consumer(builder: (ctx, ref, _) {
+                        final note = ref.watch(userFormProvider).note;
+                        return FloatTextField(
+                          initialValue: note,
+                          maxLines: 3,
+                          labelText: 'Ghi chú',
+                          onChanged: (value) => ref
+                              .read(userFormProvider.notifier)
+                              .noteChanged(value),
+                        );
+                      }),
+                    ],
                   ),
                 ),
               ),

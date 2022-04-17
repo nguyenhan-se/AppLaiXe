@@ -9,12 +9,25 @@ import 'package:flutter_boilerplate_riverpod/presentation/page/pages.dart';
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, path: '/', initial: true),
     AutoRoute(page: AppStartPage, path: '/start'),
-    AutoRoute(page: HomePage, path: '/home'),
     AutoRoute(page: SignInPage, path: '/signin'),
-    AutoRoute(page: ChairBookingPage, path: '/chair-booking'),
-    AutoRoute(page: PassengerPage, path: '/passenger-page'),
-    AutoRoute(page: ConfirmBookingPage, path: '/confirm-booking-page'),
-    AutoRoute(page: UserBookingPage, path: '/user-booking-page')
+    AutoRoute(
+      path: '/home',
+      page: HomePage,
+      children: [
+        AutoRoute(
+          path: 'mains',
+          page: EmptyRouterPage,
+          name: 'MainsTab',
+          children: [
+            AutoRoute(page: PassengerPage, path: ''),
+            AutoRoute(page: ChairBookingPage, path: 'chair-booking'),
+            AutoRoute(page: ConfirmBookingPage, path: 'confirm-booking-page'),
+            AutoRoute(page: UserBookingPage, path: 'user-booking-page')
+          ],
+        ),
+        AutoRoute(page: SettingsPage, path: 'settings', name: 'SettingsTab'),
+      ],
+    ),
   ],
 )
 class $AppRouter {}
