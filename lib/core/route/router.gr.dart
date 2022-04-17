@@ -11,15 +11,23 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/cupertino.dart' as _i4;
-import 'package:flutter/material.dart' as _i3;
+import 'package:flutter/foundation.dart' as _i8;
+import 'package:flutter/material.dart' as _i7;
 
-import '../../domain/entities/booker.dart' as _i6;
-import '../../domain/entities/destination.dart' as _i5;
+import '../../domain/entities/booker.dart' as _i10;
+import '../../domain/entities/destination.dart' as _i9;
+import '../../presentation/page/car_booking/chair_booking/chair_booking_page.dart'
+    as _i4;
+import '../../presentation/page/car_booking/confirm_booking/confirm_booking.dart'
+    as _i5;
+import '../../presentation/page/car_booking/passenger/passenger_page.dart'
+    as _i3;
+import '../../presentation/page/car_booking/user_booking/user_booking_page.dart'
+    as _i6;
 import '../../presentation/page/pages.dart' as _i1;
 
 class AppRouter extends _i2.RootStackRouter {
-  AppRouter([_i3.GlobalKey<_i3.NavigatorState>? navigatorKey])
+  AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
@@ -50,28 +58,28 @@ class AppRouter extends _i2.RootStackRouter {
     },
     HistoryTab.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.PickAndDropPage());
+          routeData: routeData, child: const _i1.HistoryBookingPage());
     },
     PassengerRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.PassengerPage());
+          routeData: routeData, child: const _i3.PassengerPage());
     },
     ChairBookingRoute.name: (routeData) {
       final args = routeData.argsAs<ChairBookingRouteArgs>();
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i1.ChairBookingPage(
+          child: _i4.ChairBookingPage(
               key: args.key, destination: args.destination));
     },
     ConfirmBookingRoute.name: (routeData) {
       final args = routeData.argsAs<ConfirmBookingRouteArgs>();
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i1.ConfirmBookingPage(key: args.key, booker: args.booker));
+          child: _i5.ConfirmBookingPage(key: args.key, booker: args.booker));
     },
     UserBookingRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.UserBookingPage());
+          routeData: routeData, child: const _i6.UserBookingPage());
     }
   };
 
@@ -97,7 +105,7 @@ class AppRouter extends _i2.RootStackRouter {
                     path: 'user-booking-page', parent: MainsTab.name)
               ]),
           _i2.RouteConfig(HistoryTab.name,
-              path: 'pick-and-drop-page', parent: HomeRoute.name)
+              path: 'history-booking-page', parent: HomeRoute.name)
         ])
       ];
 }
@@ -154,15 +162,15 @@ class MainsTab extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i1.PickAndDropPage]
+/// [_i1.HistoryBookingPage]
 class HistoryTab extends _i2.PageRouteInfo<void> {
-  const HistoryTab() : super(HistoryTab.name, path: 'pick-and-drop-page');
+  const HistoryTab() : super(HistoryTab.name, path: 'history-booking-page');
 
   static const String name = 'HistoryTab';
 }
 
 /// generated route for
-/// [_i1.PassengerPage]
+/// [_i3.PassengerPage]
 class PassengerRoute extends _i2.PageRouteInfo<void> {
   const PassengerRoute() : super(PassengerRoute.name, path: '');
 
@@ -170,9 +178,9 @@ class PassengerRoute extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i1.ChairBookingPage]
+/// [_i4.ChairBookingPage]
 class ChairBookingRoute extends _i2.PageRouteInfo<ChairBookingRouteArgs> {
-  ChairBookingRoute({_i4.Key? key, required _i5.Destination destination})
+  ChairBookingRoute({_i8.Key? key, required _i9.Destination destination})
       : super(ChairBookingRoute.name,
             path: 'chair-booking',
             args: ChairBookingRouteArgs(key: key, destination: destination));
@@ -183,9 +191,9 @@ class ChairBookingRoute extends _i2.PageRouteInfo<ChairBookingRouteArgs> {
 class ChairBookingRouteArgs {
   const ChairBookingRouteArgs({this.key, required this.destination});
 
-  final _i4.Key? key;
+  final _i8.Key? key;
 
-  final _i5.Destination destination;
+  final _i9.Destination destination;
 
   @override
   String toString() {
@@ -194,9 +202,9 @@ class ChairBookingRouteArgs {
 }
 
 /// generated route for
-/// [_i1.ConfirmBookingPage]
+/// [_i5.ConfirmBookingPage]
 class ConfirmBookingRoute extends _i2.PageRouteInfo<ConfirmBookingRouteArgs> {
-  ConfirmBookingRoute({_i4.Key? key, required _i6.Booker booker})
+  ConfirmBookingRoute({_i8.Key? key, required _i10.Booker booker})
       : super(ConfirmBookingRoute.name,
             path: 'confirm-booking-page',
             args: ConfirmBookingRouteArgs(key: key, booker: booker));
@@ -207,9 +215,9 @@ class ConfirmBookingRoute extends _i2.PageRouteInfo<ConfirmBookingRouteArgs> {
 class ConfirmBookingRouteArgs {
   const ConfirmBookingRouteArgs({this.key, required this.booker});
 
-  final _i4.Key? key;
+  final _i8.Key? key;
 
-  final _i6.Booker booker;
+  final _i10.Booker booker;
 
   @override
   String toString() {
@@ -218,7 +226,7 @@ class ConfirmBookingRouteArgs {
 }
 
 /// generated route for
-/// [_i1.UserBookingPage]
+/// [_i6.UserBookingPage]
 class UserBookingRoute extends _i2.PageRouteInfo<void> {
   const UserBookingRoute()
       : super(UserBookingRoute.name, path: 'user-booking-page');

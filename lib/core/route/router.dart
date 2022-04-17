@@ -15,20 +15,10 @@ import 'package:flutter_boilerplate_riverpod/presentation/page/pages.dart';
       path: '/home',
       page: HomePage,
       children: [
+        carBookingRoutes,
         AutoRoute(
-          path: 'mains',
-          page: EmptyRouterPage,
-          name: 'MainsTab',
-          children: [
-            AutoRoute(page: PassengerPage, path: ''),
-            AutoRoute(page: ChairBookingPage, path: 'chair-booking'),
-            AutoRoute(page: ConfirmBookingPage, path: 'confirm-booking-page'),
-            AutoRoute(page: UserBookingPage, path: 'user-booking-page')
-          ],
-        ),
-        AutoRoute(
-          page: PickAndDropPage,
-          path: 'pick-and-drop-page',
+          page: HistoryBookingPage,
+          path: 'history-booking-page',
           name: 'HistoryTab',
         ),
       ],

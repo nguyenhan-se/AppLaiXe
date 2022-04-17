@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_riverpod/core/route/route.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/destinations/destinations_provider.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/ticket_booking/ticket_booking_provider.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -13,6 +12,24 @@ class PassengerPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text('Chặng đường'),
+        actions: [
+          Consumer(builder: (context, ref, _) {
+            return Consumer(
+              builder: (ctx, ref, _) {
+                return IconButton(
+                  icon: const Icon(
+                    Icons.logout,
+                    color: Colors.white,
+                  ),
+                  onPressed: () => ref.read(authProvider.notifier).signOut(),
+                );
+              },
+            );
+          }),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [

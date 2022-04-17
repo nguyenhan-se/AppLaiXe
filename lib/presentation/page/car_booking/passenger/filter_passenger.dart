@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/authentication/auth_provider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 // Project imports:
 import 'package:flutter_boilerplate_riverpod/presentation/widgets/widgets.dart';
-
-import '../../presenters/authentication/auth_provider.dart';
 
 final List<Destination> destinations = [
   Destination.empty().copyWith(
@@ -109,12 +108,6 @@ class FilterPassenger extends StatelessWidget {
                 onChanged: (value) => _journey.value = value as String,
               ),
             ),
-            Consumer(builder: (context, ref, _) {
-              return ElevatedButton(
-                onPressed: () => ref.read(authProvider.notifier).signOut(),
-                child: const Text('Logout'),
-              );
-            }),
             ElevatedButton(
               onPressed: () => onSubmit(_dateStart.value, _journey.value),
               child: const Text('Tìm kiếm'),
