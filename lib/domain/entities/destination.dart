@@ -8,6 +8,7 @@ class Destination with _$Destination {
   const Destination._();
 
   const factory Destination({
+    required String id,
     required String code,
     required String from,
     required String to,
@@ -18,6 +19,7 @@ class Destination with _$Destination {
   }) = _Destination;
 
   factory Destination.empty() => const Destination(
+        id: '',
         code: '-',
         from: '',
         to: '',

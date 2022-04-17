@@ -107,8 +107,8 @@ class __$SeatCopyWithImpl<$Res> extends _$SeatCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Seat implements _Seat {
-  const _$_Seat({required this.seatRow, required this.seatNumber});
+class _$_Seat extends _Seat {
+  const _$_Seat({required this.seatRow, required this.seatNumber}) : super._();
 
   @override
   final String seatRow;
@@ -142,9 +142,10 @@ class _$_Seat implements _Seat {
       __$SeatCopyWithImpl<_Seat>(this, _$identity);
 }
 
-abstract class _Seat implements Seat {
+abstract class _Seat extends Seat {
   const factory _Seat({required String seatRow, required int seatNumber}) =
       _$_Seat;
+  const _Seat._() : super._();
 
   @override
   String get seatRow;

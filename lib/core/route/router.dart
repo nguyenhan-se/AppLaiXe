@@ -32,7 +32,6 @@ import 'package:flutter_boilerplate_riverpod/presentation/page/pages.dart';
             page: PickAndDropPage,
             path: 'pick-and-drop-page',
             name: 'HistoryTab'),
-        AutoRoute(page: SettingsPage, path: 'settings', name: 'SettingsTab'),
       ],
     ),
   ],

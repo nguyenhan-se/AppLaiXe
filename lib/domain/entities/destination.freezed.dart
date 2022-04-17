@@ -18,7 +18,8 @@ class _$DestinationTearOff {
   const _$DestinationTearOff();
 
   _Destination call(
-      {required String code,
+      {required String id,
+      required String code,
       required String from,
       required String to,
       required String dateForm,
@@ -26,6 +27,7 @@ class _$DestinationTearOff {
       required double timeout,
       required int price}) {
     return _Destination(
+      id: id,
       code: code,
       from: from,
       to: to,
@@ -42,6 +44,7 @@ const $Destination = _$DestinationTearOff();
 
 /// @nodoc
 mixin _$Destination {
+  String get id => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
   String get from => throw _privateConstructorUsedError;
   String get to => throw _privateConstructorUsedError;
@@ -61,7 +64,8 @@ abstract class $DestinationCopyWith<$Res> {
           Destination value, $Res Function(Destination) then) =
       _$DestinationCopyWithImpl<$Res>;
   $Res call(
-      {String code,
+      {String id,
+      String code,
       String from,
       String to,
       String dateForm,
@@ -80,6 +84,7 @@ class _$DestinationCopyWithImpl<$Res> implements $DestinationCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? code = freezed,
     Object? from = freezed,
     Object? to = freezed,
@@ -89,6 +94,10 @@ class _$DestinationCopyWithImpl<$Res> implements $DestinationCopyWith<$Res> {
     Object? price = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -129,7 +138,8 @@ abstract class _$DestinationCopyWith<$Res>
       __$DestinationCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String code,
+      {String id,
+      String code,
       String from,
       String to,
       String dateForm,
@@ -150,6 +160,7 @@ class __$DestinationCopyWithImpl<$Res> extends _$DestinationCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? code = freezed,
     Object? from = freezed,
     Object? to = freezed,
@@ -159,6 +170,10 @@ class __$DestinationCopyWithImpl<$Res> extends _$DestinationCopyWithImpl<$Res>
     Object? price = freezed,
   }) {
     return _then(_Destination(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -195,7 +210,8 @@ class __$DestinationCopyWithImpl<$Res> extends _$DestinationCopyWithImpl<$Res>
 
 class _$_Destination extends _Destination {
   const _$_Destination(
-      {required this.code,
+      {required this.id,
+      required this.code,
       required this.from,
       required this.to,
       required this.dateForm,
@@ -204,6 +220,8 @@ class _$_Destination extends _Destination {
       required this.price})
       : super._();
 
+  @override
+  final String id;
   @override
   final String code;
   @override
@@ -221,7 +239,7 @@ class _$_Destination extends _Destination {
 
   @override
   String toString() {
-    return 'Destination(code: $code, from: $from, to: $to, dateForm: $dateForm, dateTo: $dateTo, timeout: $timeout, price: $price)';
+    return 'Destination(id: $id, code: $code, from: $from, to: $to, dateForm: $dateForm, dateTo: $dateTo, timeout: $timeout, price: $price)';
   }
 
   @override
@@ -229,6 +247,7 @@ class _$_Destination extends _Destination {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Destination &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.from, from) &&
             const DeepCollectionEquality().equals(other.to, to) &&
@@ -241,6 +260,7 @@ class _$_Destination extends _Destination {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(code),
       const DeepCollectionEquality().hash(from),
       const DeepCollectionEquality().hash(to),
@@ -257,7 +277,8 @@ class _$_Destination extends _Destination {
 
 abstract class _Destination extends Destination {
   const factory _Destination(
-      {required String code,
+      {required String id,
+      required String code,
       required String from,
       required String to,
       required String dateForm,
@@ -266,6 +287,8 @@ abstract class _Destination extends Destination {
       required int price}) = _$_Destination;
   const _Destination._() : super._();
 
+  @override
+  String get id;
   @override
   String get code;
   @override

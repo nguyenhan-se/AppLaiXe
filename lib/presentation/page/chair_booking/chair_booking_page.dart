@@ -2,7 +2,8 @@
 import 'dart:math';
 
 // Package imports:
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/histories_booking/histories_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Flutter imports:
@@ -20,8 +21,12 @@ import 'seat_color_indicators.dart';
 import 'seats_area.dart';
 
 class ChairBookingPage extends HookConsumerWidget {
-  const ChairBookingPage({Key? key}) : super(key: key);
+  const ChairBookingPage({
+    Key? key,
+    required this.destination,
+  }) : super(key: key);
 
+  final Destination destination;
   static const _seatSize = 30.0;
   static const _seatGap = 10.0;
 
@@ -39,11 +44,17 @@ class ChairBookingPage extends HookConsumerWidget {
     var screenWidth = getMaxScreenWidth(6);
     screenWidth = max(screenWidth, minScreenWidth);
     final maxGridHeight = getMaxGridHeight(12);
-    late final screenScrollController = useScrollController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Đặt ghế'),
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.of(context).pop();
+            ref.read(seatBookingProvider.notifier).clearSelectedSeats();
+          },
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -62,27 +73,34 @@ class ChairBookingPage extends HookConsumerWidget {
                       padding: EdgeInsets.all(16.0),
                       child: SeatColorIndicators(),
                     ),
-                    SeatsArea(
-                      maxGridHeight: maxGridHeight,
-                      seatSize: _seatSize,
-                      seatGap: _seatGap,
-                      maxRows: 12,
-                      numOfRows: 4,
-                      seatsPerRow: 6,
-                      missing: const [
-                        Seat(seatRow: 'A', seatNumber: 2),
-                        Seat(seatRow: 'B', seatNumber: 2),
-                        Seat(seatRow: 'C', seatNumber: 2),
-                        Seat(seatRow: 'D', seatNumber: 2),
-                      ],
-                      blocked: const [],
-                      booked: const [
-                        Seat(seatRow: 'A', seatNumber: 5),
-                        Seat(seatRow: 'C', seatNumber: 3),
-                        Seat(seatRow: 'C', seatNumber: 4),
-                      ],
-                      screenScrollController: screenScrollController,
-                    ),
+                    Consumer(builder: (ctx, ref, _) {
+                      final histories = ref
+                          .watch(historiesProvider)
+                          .historiesBooking
+                          .where((element) =>
+                              element.destination.id == destination.id)
+                          .toList();
+                      final seatsBooked = histories.fold<List<Seat>>(
+                          [], (t, e) => List.from(t)..addAll(e.seats)).toList();
+                      return SeatsArea(
+                        maxGridHeight: maxGridHeight,
+                        seatSize: _seatSize,
+                        seatGap: _seatGap,
+                        maxRows: 12,
+                        numOfRows: 6,
+                        seatsPerRow: 8,
+                        missing: const [
+                          Seat(seatRow: 'A', seatNumber: 2),
+                          Seat(seatRow: 'B', seatNumber: 2),
+                          Seat(seatRow: 'C', seatNumber: 2),
+                          Seat(seatRow: 'D', seatNumber: 2),
+                          Seat(seatRow: 'E', seatNumber: 2),
+                          Seat(seatRow: 'F', seatNumber: 2),
+                        ],
+                        blocked: const [],
+                        booked: seatsBooked,
+                      );
+                    }),
                     const Spacer(),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(20, 2, 0, 22),

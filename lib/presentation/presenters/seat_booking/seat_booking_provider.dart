@@ -15,6 +15,10 @@ final seatBookingProvider =
 class _SeatBookingController extends StateNotifier<SeatBookingState> {
   _SeatBookingController() : super(SeatBookingState.initial());
 
+  void seatsLoaded() {
+    print("come here baby ====>");
+  }
+
   void toggleSeat({required Seat seat, required bool select}) {
     if (select) {
       state = state.copyWith(

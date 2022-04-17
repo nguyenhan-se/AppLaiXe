@@ -42,33 +42,37 @@ class PickAndDropPage extends HookConsumerWidget {
           ),
           body: TabBarView(
             children: [
-              Column(
-                children: [
-                  HeaderPickUp(
-                    totalCustomers: sumCustomer,
-                    totalPriceCustomers: sumTotalPrice,
-                  ),
-                  for (var item in state)
-                    PickUp(
-                      historyBooking: item,
-                    )
-                ],
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    HeaderPickUp(
+                      totalCustomers: sumCustomer,
+                      totalPriceCustomers: sumTotalPrice,
+                    ),
+                    for (var item in state)
+                      PickUp(
+                        historyBooking: item,
+                      )
+                  ],
+                ),
               ),
               HeaderPickUp(
                 totalCustomers: sumCustomer,
                 totalPriceCustomers: sumTotalPrice,
               ),
-              Column(
-                children: [
-                  HeaderPickUp(
-                    totalCustomers: sumCustomer,
-                    totalPriceCustomers: sumTotalPrice,
-                  ),
-                  for (var item in state)
-                    DropCustomer(
-                      historyBooking: item,
-                    )
-                ],
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    HeaderPickUp(
+                      totalCustomers: sumCustomer,
+                      totalPriceCustomers: sumTotalPrice,
+                    ),
+                    for (var item in state)
+                      DropCustomer(
+                        historyBooking: item,
+                      )
+                  ],
+                ),
               ),
             ],
           ),

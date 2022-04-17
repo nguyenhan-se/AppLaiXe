@@ -10,4 +10,3 @@ export 'pick_and_drop/pick_and_drop_page.dart';
 export 'login/Login/login_page.dart';
 export 'login/ForgotPassword/forgot_password_page.dart';
 export 'user_booking/user_booking_page.dart';
-export 'settings/settings_page.dart';

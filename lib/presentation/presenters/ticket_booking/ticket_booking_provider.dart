@@ -28,4 +28,6 @@ class _TicketBookingController extends StateNotifier<TicketBookingState> {
   void seatsChanged(List<Seat> seats) {
     state = state.copyWith(seats: seats);
   }
+
+  void cleared() => state = TicketBookingState.initial();
 }

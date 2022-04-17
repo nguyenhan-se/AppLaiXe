@@ -35,7 +35,8 @@ class PassengerPage extends HookConsumerWidget {
                           ref
                               .read(ticketBookingProvider.notifier)
                               .destinationChanged(state.destinations[index]);
-                          context.router.push(const ChairBookingRoute());
+                          context.router.push(ChairBookingRoute(
+                              destination: state.destinations[index]));
                         },
                         child: BoxDestination(
                           destination: state.destinations[index],

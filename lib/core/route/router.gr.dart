@@ -13,6 +13,7 @@
 import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:flutter/material.dart' as _i3;
 
+import '../../domain/entities/destination.dart' as _i4;
 import '../../presentation/page/pages.dart' as _i1;
 
 class AppRouter extends _i2.RootStackRouter {
@@ -57,19 +58,16 @@ class AppRouter extends _i2.RootStackRouter {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.PickAndDropPage());
     },
-    SettingsTab.name: (routeData) {
-      final args = routeData.argsAs<SettingsTabArgs>(
-          orElse: () => const SettingsTabArgs());
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i1.SettingsPage(key: args.key));
-    },
     PassengerRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.PassengerPage());
     },
     ChairBookingRoute.name: (routeData) {
+      final args = routeData.argsAs<ChairBookingRouteArgs>();
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.ChairBookingPage());
+          routeData: routeData,
+          child: _i1.ChairBookingPage(
+              key: args.key, destination: args.destination));
     },
     ConfirmBookingRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
@@ -105,9 +103,7 @@ class AppRouter extends _i2.RootStackRouter {
                     path: 'user-booking-page', parent: MainsTab.name)
               ]),
           _i2.RouteConfig(HistoryTab.name,
-              path: 'pick-and-drop-page', parent: HomeRoute.name),
-          _i2.RouteConfig(SettingsTab.name,
-              path: 'settings', parent: HomeRoute.name)
+              path: 'pick-and-drop-page', parent: HomeRoute.name)
         ])
       ];
 }
@@ -188,27 +184,6 @@ class HistoryTab extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i1.SettingsPage]
-class SettingsTab extends _i2.PageRouteInfo<SettingsTabArgs> {
-  SettingsTab({_i3.Key? key})
-      : super(SettingsTab.name,
-            path: 'settings', args: SettingsTabArgs(key: key));
-
-  static const String name = 'SettingsTab';
-}
-
-class SettingsTabArgs {
-  const SettingsTabArgs({this.key});
-
-  final _i3.Key? key;
-
-  @override
-  String toString() {
-    return 'SettingsTabArgs{key: $key}';
-  }
-}
-
-/// generated route for
 /// [_i1.PassengerPage]
 class PassengerRoute extends _i2.PageRouteInfo<void> {
   const PassengerRoute() : super(PassengerRoute.name, path: '');
@@ -218,11 +193,26 @@ class PassengerRoute extends _i2.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i1.ChairBookingPage]
-class ChairBookingRoute extends _i2.PageRouteInfo<void> {
-  const ChairBookingRoute()
-      : super(ChairBookingRoute.name, path: 'chair-booking');
+class ChairBookingRoute extends _i2.PageRouteInfo<ChairBookingRouteArgs> {
+  ChairBookingRoute({_i3.Key? key, required _i4.Destination destination})
+      : super(ChairBookingRoute.name,
+            path: 'chair-booking',
+            args: ChairBookingRouteArgs(key: key, destination: destination));
 
   static const String name = 'ChairBookingRoute';
+}
+
+class ChairBookingRouteArgs {
+  const ChairBookingRouteArgs({this.key, required this.destination});
+
+  final _i3.Key? key;
+
+  final _i4.Destination destination;
+
+  @override
+  String toString() {
+    return 'ChairBookingRouteArgs{key: $key, destination: $destination}';
+  }
 }
 
 /// generated route for

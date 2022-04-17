@@ -9,7 +9,6 @@ class SeatsArea extends StatelessWidget {
   final double maxGridHeight, seatSize, seatGap;
   final int numOfRows, maxRows, seatsPerRow;
   final List<Seat> missing, blocked, booked;
-  final ScrollController screenScrollController;
 
   const SeatsArea({
     Key? key,
@@ -22,7 +21,6 @@ class SeatsArea extends StatelessWidget {
     required this.missing,
     required this.blocked,
     required this.booked,
-    required this.screenScrollController,
   }) : super(key: key);
 
   bool isMissing(Seat seat) => missing.contains(seat);

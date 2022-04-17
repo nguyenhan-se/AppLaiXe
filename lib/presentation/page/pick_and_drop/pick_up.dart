@@ -58,24 +58,6 @@ class _PickUpState extends State<PickUp> {
                   ),
                 ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${oCcy.format(widget.historyBooking.totalPrice)} VNĐ',
-                    style: const TextStyle(color: Colors.red, fontSize: 16),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    widget.historyBooking.seats
-                        .map((item) => item.seatNumber)
-                        .toString(),
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ],
-              ),
               IconButton(
                   disabledColor: Colors.black,
                   onPressed: () => showDialogAlert(
@@ -91,15 +73,30 @@ class _PickUpState extends State<PickUp> {
                   icon: const Icon(Icons.directions_car)),
             ],
           ),
-          const SizedBox(
-            height: 10,
+          const SizedBox(height: 10),
+          Text(
+            '${oCcy.format(widget.historyBooking.totalPrice)} VNĐ',
+            style: const TextStyle(color: Colors.red, fontSize: 16),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              const Text('Ghế:'),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  widget.historyBooking.seats
+                      .map((item) => item.seatNames)
+                      .join(', '),
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
           ),
           const Divider(
             height: 2,
             color: Colors.black,
-          ),
-          const SizedBox(
-            height: 10,
           ),
         ],
       ),

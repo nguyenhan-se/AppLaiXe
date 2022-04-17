@@ -1,5 +1,6 @@
 // Package imports:
 import 'package:flutter_boilerplate_riverpod/core/di/init_di.dart';
+import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
 import 'package:flutter_boilerplate_riverpod/domain/usecases/histories/histories_usecase.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -28,5 +29,12 @@ class _SeatBookingController extends StateNotifier<HistoriesState> {
     final listHistories = _getHistoryBookingsUseCase();
 
     state = state.copyWith(historiesBooking: listHistories);
+  }
+
+  void historyAdded(HistoryBooking history) {
+    state = state.copyWith(
+      historiesBooking: List<HistoryBooking>.from(state.historiesBooking)
+        ..add(history),
+    );
   }
 }
