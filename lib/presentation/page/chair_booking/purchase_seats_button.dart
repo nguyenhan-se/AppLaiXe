@@ -24,11 +24,15 @@ class PurchaseSeatsButton extends StatelessWidget {
           return SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              child: Text('Mua - ${carSeats.length} Ghế'),
-              onPressed: () {
-                ref.read(ticketBookingProvider.notifier).seatsChanged(carSeats);
-                context.router.push(const ConfirmBookingRoute());
-              },
+              child: Text('Đặt - ${carSeats.length} Ghế'),
+              onPressed: carSeats.isNotEmpty
+                  ? () {
+                      ref
+                          .read(ticketBookingProvider.notifier)
+                          .seatsChanged(carSeats);
+                      context.router.push(UserBookingRoute());
+                    }
+                  : null,
             ),
           );
         },

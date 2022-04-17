@@ -14,7 +14,7 @@ class Destination with _$Destination {
     required String dateForm,
     required String dateTo,
     required double timeout,
-    required double price,
+    required int price,
   }) = _Destination;
 
   factory Destination.empty() => const Destination(
@@ -29,4 +29,6 @@ class Destination with _$Destination {
 
   String get codeForm => code.split('-')[0];
   String get codeTo => code.split('-')[1];
+
+  String? get validatePrice => price > 0 ? null : 'Nhập giá';
 }

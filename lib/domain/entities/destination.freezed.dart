@@ -24,7 +24,7 @@ class _$DestinationTearOff {
       required String dateForm,
       required String dateTo,
       required double timeout,
-      required double price}) {
+      required int price}) {
     return _Destination(
       code: code,
       from: from,
@@ -48,7 +48,7 @@ mixin _$Destination {
   String get dateForm => throw _privateConstructorUsedError;
   String get dateTo => throw _privateConstructorUsedError;
   double get timeout => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DestinationCopyWith<Destination> get copyWith =>
@@ -67,7 +67,7 @@ abstract class $DestinationCopyWith<$Res> {
       String dateForm,
       String dateTo,
       double timeout,
-      double price});
+      int price});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class _$DestinationCopyWithImpl<$Res> implements $DestinationCopyWith<$Res> {
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -135,7 +135,7 @@ abstract class _$DestinationCopyWith<$Res>
       String dateForm,
       String dateTo,
       double timeout,
-      double price});
+      int price});
 }
 
 /// @nodoc
@@ -186,7 +186,7 @@ class __$DestinationCopyWithImpl<$Res> extends _$DestinationCopyWithImpl<$Res>
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -217,7 +217,7 @@ class _$_Destination extends _Destination {
   @override
   final double timeout;
   @override
-  final double price;
+  final int price;
 
   @override
   String toString() {
@@ -263,7 +263,7 @@ abstract class _Destination extends Destination {
       required String dateForm,
       required String dateTo,
       required double timeout,
-      required double price}) = _$_Destination;
+      required int price}) = _$_Destination;
   const _Destination._() : super._();
 
   @override
@@ -279,7 +279,7 @@ abstract class _Destination extends Destination {
   @override
   double get timeout;
   @override
-  double get price;
+  int get price;
   @override
   @JsonKey(ignore: true)
   _$DestinationCopyWith<_Destination> get copyWith =>

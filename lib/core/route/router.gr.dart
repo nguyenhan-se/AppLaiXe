@@ -29,21 +29,31 @@ class AppRouter extends _i2.RootStackRouter {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.AppStartPage());
     },
-    HomeRoute.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.HomePage());
-    },
     SignInRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.SignInPage());
     },
-    ChairBookingRoute.name: (routeData) {
+    HomeRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.ChairBookingPage());
+          routeData: routeData, child: const _i1.HomePage());
+    },
+    MainsTab.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i2.EmptyRouterPage());
+    },
+    SettingsTab.name: (routeData) {
+      final args = routeData.argsAs<SettingsTabArgs>(
+          orElse: () => const SettingsTabArgs());
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: _i1.SettingsPage(key: args.key));
     },
     PassengerRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.PassengerPage());
+    },
+    ChairBookingRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.ChairBookingPage());
     },
     ConfirmBookingRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
@@ -64,6 +74,9 @@ class AppRouter extends _i2.RootStackRouter {
     PickAndDropRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.PickAndDropPage());
+    UserBookingRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.UserBookingPage());
     }
   };
 
@@ -71,7 +84,6 @@ class AppRouter extends _i2.RootStackRouter {
   List<_i2.RouteConfig> get routes => [
         _i2.RouteConfig(SplashRoute.name, path: '/'),
         _i2.RouteConfig(AppStartRoute.name, path: '/start'),
-        _i2.RouteConfig(HomeRoute.name, path: '/home'),
         _i2.RouteConfig(SignInRoute.name, path: '/signin'),
         _i2.RouteConfig(ChairBookingRoute.name, path: '/chair-booking'),
         _i2.RouteConfig(PassengerRoute.name, path: '/passenger-page'),
@@ -82,6 +94,23 @@ class AppRouter extends _i2.RootStackRouter {
             path: '/forgot-password-page'),
         _i2.RouteConfig(RatingRoute.name, path: '/rating-page'),
         _i2.RouteConfig(PickAndDropRoute.name, path: '/pick-and-drop-page')
+        _i2.RouteConfig(HomeRoute.name, path: '/home', children: [
+          _i2.RouteConfig(MainsTab.name,
+              path: 'mains',
+              parent: HomeRoute.name,
+              children: [
+                _i2.RouteConfig(PassengerRoute.name,
+                    path: '', parent: MainsTab.name),
+                _i2.RouteConfig(ChairBookingRoute.name,
+                    path: 'chair-booking', parent: MainsTab.name),
+                _i2.RouteConfig(ConfirmBookingRoute.name,
+                    path: 'confirm-booking-page', parent: MainsTab.name),
+                _i2.RouteConfig(UserBookingRoute.name,
+                    path: 'user-booking-page', parent: MainsTab.name)
+              ]),
+          _i2.RouteConfig(SettingsTab.name,
+              path: 'settings', parent: HomeRoute.name)
+        ])
       ];
 }
 
@@ -102,14 +131,6 @@ class AppStartRoute extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i1.HomePage]
-class HomeRoute extends _i2.PageRouteInfo<void> {
-  const HomeRoute() : super(HomeRoute.name, path: '/home');
-
-  static const String name = 'HomeRoute';
-}
-
-/// generated route for
 /// [_i1.SignInPage]
 class SignInRoute extends _i2.PageRouteInfo<void> {
   const SignInRoute() : super(SignInRoute.name, path: '/signin');
@@ -118,27 +139,66 @@ class SignInRoute extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i1.ChairBookingPage]
-class ChairBookingRoute extends _i2.PageRouteInfo<void> {
-  const ChairBookingRoute()
-      : super(ChairBookingRoute.name, path: '/chair-booking');
+/// [_i1.HomePage]
+class HomeRoute extends _i2.PageRouteInfo<void> {
+  const HomeRoute({List<_i2.PageRouteInfo>? children})
+      : super(HomeRoute.name, path: '/home', initialChildren: children);
 
-  static const String name = 'ChairBookingRoute';
+  static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [_i2.EmptyRouterPage]
+class MainsTab extends _i2.PageRouteInfo<void> {
+  const MainsTab({List<_i2.PageRouteInfo>? children})
+      : super(MainsTab.name, path: 'mains', initialChildren: children);
+
+  static const String name = 'MainsTab';
+}
+
+/// generated route for
+/// [_i1.SettingsPage]
+class SettingsTab extends _i2.PageRouteInfo<SettingsTabArgs> {
+  SettingsTab({_i3.Key? key})
+      : super(SettingsTab.name,
+            path: 'settings', args: SettingsTabArgs(key: key));
+
+  static const String name = 'SettingsTab';
+}
+
+class SettingsTabArgs {
+  const SettingsTabArgs({this.key});
+
+  final _i3.Key? key;
+
+  @override
+  String toString() {
+    return 'SettingsTabArgs{key: $key}';
+  }
 }
 
 /// generated route for
 /// [_i1.PassengerPage]
 class PassengerRoute extends _i2.PageRouteInfo<void> {
-  const PassengerRoute() : super(PassengerRoute.name, path: '/passenger-page');
+  const PassengerRoute() : super(PassengerRoute.name, path: '');
 
   static const String name = 'PassengerRoute';
+}
+
+/// generated route for
+/// [_i1.ChairBookingPage]
+class ChairBookingRoute extends _i2.PageRouteInfo<void> {
+  const ChairBookingRoute()
+      : super(ChairBookingRoute.name, path: 'chair-booking');
+
+  static const String name = 'ChairBookingRoute';
 }
 
 /// generated route for
 /// [_i1.ConfirmBookingPage]
 class ConfirmBookingRoute extends _i2.PageRouteInfo<void> {
   const ConfirmBookingRoute()
-      : super(ConfirmBookingRoute.name, path: '/confirm-booking-page');
+      : super(ConfirmBookingRoute.name, path: 'confirm-booking-page');
 
   static const String name = 'ConfirmBookingRoute';
 }
@@ -175,4 +235,10 @@ class PickAndDropRoute extends _i2.PageRouteInfo<void> {
       : super(PickAndDropRoute.name, path: '/pick-and-drop-page');
 
   static const String name = 'PickAndDropRoute';
+/// [_i1.UserBookingPage]
+class UserBookingRoute extends _i2.PageRouteInfo<void> {
+  const UserBookingRoute()
+      : super(UserBookingRoute.name, path: 'user-booking-page');
+
+  static const String name = 'UserBookingRoute';
 }

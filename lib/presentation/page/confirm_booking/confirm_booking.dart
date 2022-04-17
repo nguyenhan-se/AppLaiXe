@@ -16,7 +16,6 @@ class ConfirmBookingPage extends HookConsumerWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 16),
             const TicketView(),
             const Spacer(),
             Padding(
