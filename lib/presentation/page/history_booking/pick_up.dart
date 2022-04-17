@@ -15,6 +15,8 @@ class PickUp extends StatefulWidget {
 }
 
 class _PickUpState extends State<PickUp> {
+  bool _disableButtonPhone = false;
+  bool _disableButtonCar = false;
   final oCcy = NumberFormat("#,##0", "en_US");
 
   @override
@@ -59,17 +61,56 @@ class _PickUpState extends State<PickUp> {
                 ],
               ),
               IconButton(
-                  disabledColor: Colors.black,
-                  onPressed: () => showDialogAlert(
-                      context, 'Xác nhận ĐÃ GỌI', widget.historyBooking),
-                  icon: const Icon(Icons.phone_enabled)),
+                onPressed: _disableButtonPhone || _disableButtonCar
+                    ? null
+                    : () => showDialogAlert(
+                          context,
+                          'Xác nhận ĐÃ GỌI',
+                          widget.historyBooking,
+                          () => {
+                            setState(
+                              () {
+                                _disableButtonPhone = true;
+                              },
+                            ),
+                            Navigator.of(context).pop()
+                          },
+                        ),
+                icon: const Icon(Icons.phone_enabled),
+              ),
               IconButton(
-                  onPressed: () => showDialogAlert(
-                      context, 'Xác nhận KHÔNG NGHE', widget.historyBooking),
+                  onPressed: _disableButtonPhone || _disableButtonCar
+                      ? null
+                      : () => showDialogAlert(
+                            context,
+                            'Xác nhận KHÔNG NGHE',
+                            widget.historyBooking,
+                            () => {
+                              setState(
+                                () {
+                                  _disableButtonPhone = true;
+                                },
+                              ),
+                              Navigator.of(context).pop()
+                            },
+                          ),
                   icon: const Icon(Icons.phone_disabled)),
               IconButton(
-                  onPressed: () => showDialogAlert(
-                      context, 'Xác nhận ĐÃ LÊN', widget.historyBooking),
+                  onPressed: _disableButtonCar
+                      ? null
+                      : () => showDialogAlert(
+                            context,
+                            'Xác nhận ĐÃ LÊN',
+                            widget.historyBooking,
+                            () => {
+                              setState(
+                                () {
+                                  _disableButtonCar = true;
+                                },
+                              ),
+                              Navigator.of(context).pop()
+                            },
+                          ),
                   icon: const Icon(Icons.directions_car)),
             ],
           ),
@@ -98,13 +139,16 @@ class _PickUpState extends State<PickUp> {
             height: 2,
             color: Colors.black,
           ),
+          const SizedBox(
+            height: 10,
+          )
         ],
       ),
     );
   }
 
-  void showDialogAlert(
-          BuildContext context, String title, HistoryBooking historyBooking) =>
+  void showDialogAlert(BuildContext context, String title,
+          HistoryBooking historyBooking, Function() submit) =>
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -138,7 +182,7 @@ class _PickUpState extends State<PickUp> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ElevatedButton(
-                          onPressed: () => {},
+                          onPressed: submit,
                           child: const Text('Có'),
                         ),
                         ElevatedButton(

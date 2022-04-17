@@ -33,7 +33,7 @@ class HistoryBookingPage extends HookConsumerWidget {
                 text: 'Trung chuyển',
               ),
               Tab(
-                icon: Icon(Icons.directions_bike),
+                icon: Icon(Icons.directions_car),
                 text: 'Trả khách',
               ),
             ],

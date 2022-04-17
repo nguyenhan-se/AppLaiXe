@@ -12,11 +12,10 @@ class RoundedPasswordField extends StatefulWidget {
 }
 
 class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     bool isPasswordValid(String password) => password.isNotEmpty;
-    bool _passwordVisible = false;
-
     return TextFieldContainer(
       child: TextFormField(
         validator: (password) {
@@ -26,7 +25,7 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
             return 'Nhập mật khẩu';
           }
         },
-        obscureText: _passwordVisible,
+        obscureText: _isObscure,
         onChanged: widget.onChanged,
         cursorColor: Colors.black,
         decoration: InputDecoration(
@@ -37,13 +36,13 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
           ),
           suffixIcon: IconButton(
             icon: Icon(
-              _passwordVisible ? Icons.visibility : Icons.visibility_off,
+              _isObscure ? Icons.visibility : Icons.visibility_off,
               color: Colors.black,
             ),
             onPressed: () {
               setState(
                 () {
-                  _passwordVisible = !_passwordVisible;
+                  _isObscure = !_isObscure;
                 },
               );
             },

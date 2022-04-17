@@ -40,7 +40,6 @@ class Body extends HookConsumerWidget {
               ),
               Consumer(
                 builder: (context, ref, _) {
-                  final state = ref.watch<AuthState>(authProvider);
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     width: size.width * 0.8,
