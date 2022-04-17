@@ -48,6 +48,10 @@ class AppRouter extends _i2.RootStackRouter {
     ConfirmBookingRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.ConfirmBookingPage());
+    },
+    UserBookingRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.UserBookingPage());
     }
   };
 
@@ -59,7 +63,9 @@ class AppRouter extends _i2.RootStackRouter {
         _i2.RouteConfig(SignInRoute.name, path: '/signin'),
         _i2.RouteConfig(ChairBookingRoute.name, path: '/chair-booking'),
         _i2.RouteConfig(PassengerRoute.name, path: '/passenger-page'),
-        _i2.RouteConfig(ConfirmBookingRoute.name, path: '/confirm-booking-page')
+        _i2.RouteConfig(ConfirmBookingRoute.name,
+            path: '/confirm-booking-page'),
+        _i2.RouteConfig(UserBookingRoute.name, path: '/user-booking-page')
       ];
 }
 
@@ -119,4 +125,13 @@ class ConfirmBookingRoute extends _i2.PageRouteInfo<void> {
       : super(ConfirmBookingRoute.name, path: '/confirm-booking-page');
 
   static const String name = 'ConfirmBookingRoute';
+}
+
+/// generated route for
+/// [_i1.UserBookingPage]
+class UserBookingRoute extends _i2.PageRouteInfo<void> {
+  const UserBookingRoute()
+      : super(UserBookingRoute.name, path: '/user-booking-page');
+
+  static const String name = 'UserBookingRoute';
 }

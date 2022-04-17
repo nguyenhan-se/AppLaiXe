@@ -31,7 +31,7 @@ class ContainerLegend extends StatelessWidget {
           top: 12,
           child: Container(
             padding: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
-            color: Colors.white,
+            color: theme.scaffoldBackgroundColor,
             child: Text(
               title,
               style: theme.textTheme.bodySmall?.copyWith(color: Colors.blue),

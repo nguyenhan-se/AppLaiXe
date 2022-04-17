@@ -15,28 +15,31 @@ class FloatTextField extends StatelessWidget {
   final int? maxLines;
   final bool readOnly;
   final String? errorText;
+  final String? initialValue;
 
-  const FloatTextField(
-      {Key? key,
-      required this.labelText,
-      this.obscureText = false,
-      this.keyboardType = TextInputType.text,
-      this.maxLength = 100,
-      this.hintText = '',
-      this.suffixText = '',
-      this.enabled = true,
-      this.controller,
-      this.onChanged,
-      this.suffixIcon,
-      this.maxLines = 1,
-      this.readOnly = false,
-      this.errorText})
-      : super(key: key);
+  const FloatTextField({
+    Key? key,
+    required this.labelText,
+    this.obscureText = false,
+    this.keyboardType = TextInputType.text,
+    this.maxLength = 100,
+    this.hintText = '',
+    this.suffixText = '',
+    this.enabled = true,
+    this.controller,
+    this.onChanged,
+    this.suffixIcon,
+    this.maxLines = 1,
+    this.readOnly = false,
+    this.errorText,
+    this.initialValue,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return TextField(
+    return TextFormField(
+      initialValue: initialValue,
       enabled: enabled,
       readOnly: readOnly,
       maxLines: maxLines,

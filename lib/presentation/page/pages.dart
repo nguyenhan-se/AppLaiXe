@@ -5,3 +5,4 @@ export 'splash/splash_page.dart';
 export 'home/home_page.dart';
 export 'passenger/passenger_page.dart';
 export 'confirm_booking/confirm_booking.dart';
+export 'user_booking/user_booking_page.dart';

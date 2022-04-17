@@ -13,7 +13,8 @@ import 'package:flutter_boilerplate_riverpod/presentation/page/pages.dart';
     AutoRoute(page: SignInPage, path: '/signin'),
     AutoRoute(page: ChairBookingPage, path: '/chair-booking'),
     AutoRoute(page: PassengerPage, path: '/passenger-page'),
-    AutoRoute(page: ConfirmBookingPage, path: '/confirm-booking-page')
+    AutoRoute(page: ConfirmBookingPage, path: '/confirm-booking-page'),
+    AutoRoute(page: UserBookingPage, path: '/user-booking-page')
   ],
 )
 class $AppRouter {}
