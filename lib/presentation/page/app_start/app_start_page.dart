@@ -35,7 +35,7 @@ class _AppStartPageState extends ConsumerState<AppStartPage> {
         },
         unauthenticated: () {
           context.router.popUntilRoot();
-          context.router.push(const SignInRoute());
+          context.router.push(const LoginRoute());
         },
         failure: (failure) {
           showDialog(

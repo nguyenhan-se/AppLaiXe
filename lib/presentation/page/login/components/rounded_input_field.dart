@@ -15,8 +15,19 @@ class RoundedInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isEmailValid(String email) => RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email);
+
     return TextFieldContainer(
-      child: TextField(
+      child: TextFormField(
+        validator: (email) {
+          if (isEmailValid(email!)) {
+            return null;
+          } else {
+            return 'Nhập địa chỉ email';
+          }
+        },
         onChanged: onChanged,
         cursorColor: Colors.black,
         decoration: InputDecoration(
