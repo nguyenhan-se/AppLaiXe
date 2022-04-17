@@ -11,7 +11,6 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/cupertino.dart' as _i4;
 import 'package:flutter/material.dart' as _i3;
 
 import '../../presentation/page/pages.dart' as _i1;
@@ -38,10 +37,6 @@ class AppRouter extends _i2.RootStackRouter {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.RatingPage());
     },
-    PickAndDropRoute.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.PickAndDropPage());
-    },
     ForgotPasswordRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.ForgotPasswordPage());
@@ -57,6 +52,10 @@ class AppRouter extends _i2.RootStackRouter {
     MainsTab.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i2.EmptyRouterPage());
+    },
+    HistoryTab.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.PickAndDropPage());
     },
     SettingsTab.name: (routeData) {
       final args = routeData.argsAs<SettingsTabArgs>(
@@ -88,7 +87,6 @@ class AppRouter extends _i2.RootStackRouter {
         _i2.RouteConfig(AppStartRoute.name, path: '/start'),
         _i2.RouteConfig(SignInRoute.name, path: '/signin'),
         _i2.RouteConfig(RatingRoute.name, path: '/rating-page'),
-        _i2.RouteConfig(PickAndDropRoute.name, path: '/pick-and-drop-page'),
         _i2.RouteConfig(ForgotPasswordRoute.name,
             path: '/forgot-password-page'),
         _i2.RouteConfig(LoginRoute.name, path: '/login-page'),
@@ -106,6 +104,8 @@ class AppRouter extends _i2.RootStackRouter {
                 _i2.RouteConfig(UserBookingRoute.name,
                     path: 'user-booking-page', parent: MainsTab.name)
               ]),
+          _i2.RouteConfig(HistoryTab.name,
+              path: 'pick-and-drop-page', parent: HomeRoute.name),
           _i2.RouteConfig(SettingsTab.name,
               path: 'settings', parent: HomeRoute.name)
         ])
@@ -145,15 +145,6 @@ class RatingRoute extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i1.PickAndDropPage]
-class PickAndDropRoute extends _i2.PageRouteInfo<void> {
-  const PickAndDropRoute()
-      : super(PickAndDropRoute.name, path: '/pick-and-drop-page');
-
-  static const String name = 'PickAndDropRoute';
-}
-
-/// generated route for
 /// [_i1.ForgotPasswordPage]
 class ForgotPasswordRoute extends _i2.PageRouteInfo<void> {
   const ForgotPasswordRoute()
@@ -189,9 +180,17 @@ class MainsTab extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [_i1.PickAndDropPage]
+class HistoryTab extends _i2.PageRouteInfo<void> {
+  const HistoryTab() : super(HistoryTab.name, path: 'pick-and-drop-page');
+
+  static const String name = 'HistoryTab';
+}
+
+/// generated route for
 /// [_i1.SettingsPage]
 class SettingsTab extends _i2.PageRouteInfo<SettingsTabArgs> {
-  SettingsTab({_i4.Key? key})
+  SettingsTab({_i3.Key? key})
       : super(SettingsTab.name,
             path: 'settings', args: SettingsTabArgs(key: key));
 
@@ -201,7 +200,7 @@ class SettingsTab extends _i2.PageRouteInfo<SettingsTabArgs> {
 class SettingsTabArgs {
   const SettingsTabArgs({this.key});
 
-  final _i4.Key? key;
+  final _i3.Key? key;
 
   @override
   String toString() {

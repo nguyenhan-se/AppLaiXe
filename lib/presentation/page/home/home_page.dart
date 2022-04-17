@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_riverpod/core/route/route.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
@@ -26,9 +25,9 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      routes: [
-        const MainsTab(),
-        SettingsTab(),
+      routes: const [
+        MainsTab(),
+        HistoryTab(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
