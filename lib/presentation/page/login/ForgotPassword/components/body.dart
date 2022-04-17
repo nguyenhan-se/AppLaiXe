@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate_riverpod/core/route/router.gr.dart';
 
-import '../../components/rounded_button.dart';
+import '../../../../../core/route/router.gr.dart';
 import '../../components/rounded_input_field.dart';
 import 'background.dart';
 
