@@ -5,3 +5,7 @@ export 'splash/splash_page.dart';
 export 'home/home_page.dart';
 export 'passenger/passenger_page.dart';
 export 'confirm_booking/confirm_booking.dart';
+export 'rating/rating_page.dart';
+export 'pick_and_drop/pick_and_drop_page.dart';
+export 'login/Login/login_page.dart';
+export 'login/ForgotPassword/forgot_password_page.dart';

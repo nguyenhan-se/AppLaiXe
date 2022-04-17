@@ -31,7 +31,7 @@ class _AppStartPageState extends ConsumerState<AppStartPage> {
         orElse: () => null,
         authenticated: (_) {
           context.router.popUntilRoot();
-          context.router.push(const PassengerRoute());
+          context.router.push(const LoginRoute());
         },
         unauthenticated: () {
           context.router.popUntilRoot();
