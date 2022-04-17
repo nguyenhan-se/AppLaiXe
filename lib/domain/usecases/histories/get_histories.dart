@@ -2,13 +2,13 @@
 import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
-import 'package:flutter_boilerplate_riverpod/domain/entities/user_booking.dart';
+import 'package:flutter_boilerplate_riverpod/domain/entities/booker.dart';
 
 import '../usecase.dart';
 
 final List<HistoryBooking> listHistoryBooking = [
   HistoryBooking(
-    user: const UserBooking(
+    user: const Booker(
       name: 'Bảo Bảo',
       phone: '0945658635',
       startPoint: 'Tổ 12',
@@ -31,7 +31,7 @@ final List<HistoryBooking> listHistoryBooking = [
     ],
   ),
   HistoryBooking(
-    user: const UserBooking(
+    user: const Booker(
       name: 'Bảo Bảo 1',
       phone: '0334228284',
       startPoint: 'Tổ 7',
@@ -55,7 +55,7 @@ final List<HistoryBooking> listHistoryBooking = [
     ],
   ),
   HistoryBooking(
-    user: const UserBooking(
+    user: const Booker(
       name: 'Nguyễn Hưng',
       phone: '0945658635',
       startPoint: 'Mễ Trì',

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../components/forgot_password.dart';
-import '../../components/rounded_input_field.dart';
-import '../../components/rounded_password_field.dart';
+import '../components/forgot_password.dart';
+import '../components/rounded_input_field.dart';
+import '../components/rounded_password_field.dart';
 import 'background.dart';
 
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
@@ -41,11 +41,6 @@ class Body extends HookConsumerWidget {
               Consumer(
                 builder: (context, ref, _) {
                   final state = ref.watch<AuthState>(authProvider);
-                  final handleLogin = state.maybeWhen(
-                      orElse: () => () => ref
-                          .read(authProvider.notifier)
-                          .login('hungnt.se@gmail.com', 'campaign4'),
-                      authenticating: () => null);
                   return Container(
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     width: size.width * 0.8,

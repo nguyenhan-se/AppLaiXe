@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'components/body.dart';
+import 'body.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class ForgotPasswordPage extends StatelessWidget {
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

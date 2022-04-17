@@ -14,6 +14,7 @@ import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:flutter/cupertino.dart' as _i4;
 import 'package:flutter/material.dart' as _i3;
 
+import '../../domain/entities/booker.dart' as _i6;
 import '../../domain/entities/destination.dart' as _i5;
 import '../../presentation/page/pages.dart' as _i1;
 
@@ -30,10 +31,6 @@ class AppRouter extends _i2.RootStackRouter {
     AppStartRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.AppStartPage());
-    },
-    RatingRoute.name: (routeData) {
-      return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.RatingPage());
     },
     ForgotPasswordRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
@@ -67,8 +64,10 @@ class AppRouter extends _i2.RootStackRouter {
               key: args.key, destination: args.destination));
     },
     ConfirmBookingRoute.name: (routeData) {
+      final args = routeData.argsAs<ConfirmBookingRouteArgs>();
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.ConfirmBookingPage());
+          routeData: routeData,
+          child: _i1.ConfirmBookingPage(key: args.key, booker: args.booker));
     },
     UserBookingRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
@@ -80,7 +79,6 @@ class AppRouter extends _i2.RootStackRouter {
   List<_i2.RouteConfig> get routes => [
         _i2.RouteConfig(SplashRoute.name, path: '/'),
         _i2.RouteConfig(AppStartRoute.name, path: '/start'),
-        _i2.RouteConfig(RatingRoute.name, path: '/rating-page'),
         _i2.RouteConfig(ForgotPasswordRoute.name,
             path: '/forgot-password-page'),
         _i2.RouteConfig(LoginRoute.name, path: '/login-page'),
@@ -118,14 +116,6 @@ class AppStartRoute extends _i2.PageRouteInfo<void> {
   const AppStartRoute() : super(AppStartRoute.name, path: '/start');
 
   static const String name = 'AppStartRoute';
-}
-
-/// generated route for
-/// [_i1.RatingPage]
-class RatingRoute extends _i2.PageRouteInfo<void> {
-  const RatingRoute() : super(RatingRoute.name, path: '/rating-page');
-
-  static const String name = 'RatingRoute';
 }
 
 /// generated route for
@@ -205,11 +195,26 @@ class ChairBookingRouteArgs {
 
 /// generated route for
 /// [_i1.ConfirmBookingPage]
-class ConfirmBookingRoute extends _i2.PageRouteInfo<void> {
-  const ConfirmBookingRoute()
-      : super(ConfirmBookingRoute.name, path: 'confirm-booking-page');
+class ConfirmBookingRoute extends _i2.PageRouteInfo<ConfirmBookingRouteArgs> {
+  ConfirmBookingRoute({_i4.Key? key, required _i6.Booker booker})
+      : super(ConfirmBookingRoute.name,
+            path: 'confirm-booking-page',
+            args: ConfirmBookingRouteArgs(key: key, booker: booker));
 
   static const String name = 'ConfirmBookingRoute';
+}
+
+class ConfirmBookingRouteArgs {
+  const ConfirmBookingRouteArgs({this.key, required this.booker});
+
+  final _i4.Key? key;
+
+  final _i6.Booker booker;
+
+  @override
+  String toString() {
+    return 'ConfirmBookingRouteArgs{key: $key, booker: $booker}';
+  }
 }
 
 /// generated route for

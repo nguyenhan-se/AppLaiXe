@@ -18,7 +18,7 @@ class _$HistoryBookingTearOff {
   const _$HistoryBookingTearOff();
 
   _HistoryBooking call(
-      {required UserBooking user,
+      {required Booker user,
       required DateTime departure,
       required Destination destination,
       required List<Seat> seats,
@@ -38,7 +38,7 @@ const $HistoryBooking = _$HistoryBookingTearOff();
 
 /// @nodoc
 mixin _$HistoryBooking {
-  UserBooking get user => throw _privateConstructorUsedError;
+  Booker get user => throw _privateConstructorUsedError;
   DateTime get departure => throw _privateConstructorUsedError;
   Destination get destination => throw _privateConstructorUsedError;
   List<Seat> get seats => throw _privateConstructorUsedError;
@@ -55,13 +55,13 @@ abstract class $HistoryBookingCopyWith<$Res> {
           HistoryBooking value, $Res Function(HistoryBooking) then) =
       _$HistoryBookingCopyWithImpl<$Res>;
   $Res call(
-      {UserBooking user,
+      {Booker user,
       DateTime departure,
       Destination destination,
       List<Seat> seats,
       String? note});
 
-  $UserBookingCopyWith<$Res> get user;
+  $BookerCopyWith<$Res> get user;
   $DestinationCopyWith<$Res> get destination;
 }
 
@@ -86,7 +86,7 @@ class _$HistoryBookingCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserBooking,
+              as Booker,
       departure: departure == freezed
           ? _value.departure
           : departure // ignore: cast_nullable_to_non_nullable
@@ -107,8 +107,8 @@ class _$HistoryBookingCopyWithImpl<$Res>
   }
 
   @override
-  $UserBookingCopyWith<$Res> get user {
-    return $UserBookingCopyWith<$Res>(_value.user, (value) {
+  $BookerCopyWith<$Res> get user {
+    return $BookerCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
   }
@@ -129,14 +129,14 @@ abstract class _$HistoryBookingCopyWith<$Res>
       __$HistoryBookingCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UserBooking user,
+      {Booker user,
       DateTime departure,
       Destination destination,
       List<Seat> seats,
       String? note});
 
   @override
-  $UserBookingCopyWith<$Res> get user;
+  $BookerCopyWith<$Res> get user;
   @override
   $DestinationCopyWith<$Res> get destination;
 }
@@ -164,7 +164,7 @@ class __$HistoryBookingCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserBooking,
+              as Booker,
       departure: departure == freezed
           ? _value.departure
           : departure // ignore: cast_nullable_to_non_nullable
@@ -197,7 +197,7 @@ class _$_HistoryBooking extends _HistoryBooking {
       : super._();
 
   @override
-  final UserBooking user;
+  final Booker user;
   @override
   final DateTime departure;
   @override
@@ -242,7 +242,7 @@ class _$_HistoryBooking extends _HistoryBooking {
 
 abstract class _HistoryBooking extends HistoryBooking {
   const factory _HistoryBooking(
-      {required UserBooking user,
+      {required Booker user,
       required DateTime departure,
       required Destination destination,
       required List<Seat> seats,
@@ -250,7 +250,7 @@ abstract class _HistoryBooking extends HistoryBooking {
   const _HistoryBooking._() : super._();
 
   @override
-  UserBooking get user;
+  Booker get user;
   @override
   DateTime get departure;
   @override

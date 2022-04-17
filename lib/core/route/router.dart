@@ -9,7 +9,6 @@ import 'package:flutter_boilerplate_riverpod/presentation/page/pages.dart';
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, path: '/', initial: true),
     AutoRoute(page: AppStartPage, path: '/start'),
-    AutoRoute(page: RatingPage, path: '/rating-page'),
     AutoRoute(page: ForgotPasswordPage, path: '/forgot-password-page'),
     AutoRoute(page: LoginPage, path: '/login-page'),
     AutoRoute(
@@ -28,9 +27,10 @@ import 'package:flutter_boilerplate_riverpod/presentation/page/pages.dart';
           ],
         ),
         AutoRoute(
-            page: PickAndDropPage,
-            path: 'pick-and-drop-page',
-            name: 'HistoryTab'),
+          page: PickAndDropPage,
+          path: 'pick-and-drop-page',
+          name: 'HistoryTab',
+        ),
       ],
     ),
   ],

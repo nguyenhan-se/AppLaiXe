@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/route/router.gr.dart';
-import '../../components/rounded_input_field.dart';
+import '../components/rounded_input_field.dart';
 import 'background.dart';
 
 class Body extends StatelessWidget {

@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'user_booking.dart';
+part of 'booker.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,17 +14,17 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$UserBookingTearOff {
-  const _$UserBookingTearOff();
+class _$BookerTearOff {
+  const _$BookerTearOff();
 
-  _UserBooking call(
+  _Booker call(
       {required String name,
       required String phone,
       required String startPoint,
       required String endPoint,
       required String type,
       String? note}) {
-    return _UserBooking(
+    return _Booker(
       name: name,
       phone: phone,
       startPoint: startPoint,
@@ -36,10 +36,10 @@ class _$UserBookingTearOff {
 }
 
 /// @nodoc
-const $UserBooking = _$UserBookingTearOff();
+const $Booker = _$BookerTearOff();
 
 /// @nodoc
-mixin _$UserBooking {
+mixin _$Booker {
   String get name => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get startPoint => throw _privateConstructorUsedError;
@@ -48,15 +48,13 @@ mixin _$UserBooking {
   String? get note => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserBookingCopyWith<UserBooking> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BookerCopyWith<Booker> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserBookingCopyWith<$Res> {
-  factory $UserBookingCopyWith(
-          UserBooking value, $Res Function(UserBooking) then) =
-      _$UserBookingCopyWithImpl<$Res>;
+abstract class $BookerCopyWith<$Res> {
+  factory $BookerCopyWith(Booker value, $Res Function(Booker) then) =
+      _$BookerCopyWithImpl<$Res>;
   $Res call(
       {String name,
       String phone,
@@ -67,12 +65,12 @@ abstract class $UserBookingCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserBookingCopyWithImpl<$Res> implements $UserBookingCopyWith<$Res> {
-  _$UserBookingCopyWithImpl(this._value, this._then);
+class _$BookerCopyWithImpl<$Res> implements $BookerCopyWith<$Res> {
+  _$BookerCopyWithImpl(this._value, this._then);
 
-  final UserBooking _value;
+  final Booker _value;
   // ignore: unused_field
-  final $Res Function(UserBooking) _then;
+  final $Res Function(Booker) _then;
 
   @override
   $Res call({
@@ -113,11 +111,9 @@ class _$UserBookingCopyWithImpl<$Res> implements $UserBookingCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserBookingCopyWith<$Res>
-    implements $UserBookingCopyWith<$Res> {
-  factory _$UserBookingCopyWith(
-          _UserBooking value, $Res Function(_UserBooking) then) =
-      __$UserBookingCopyWithImpl<$Res>;
+abstract class _$BookerCopyWith<$Res> implements $BookerCopyWith<$Res> {
+  factory _$BookerCopyWith(_Booker value, $Res Function(_Booker) then) =
+      __$BookerCopyWithImpl<$Res>;
   @override
   $Res call(
       {String name,
@@ -129,14 +125,13 @@ abstract class _$UserBookingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$UserBookingCopyWithImpl<$Res> extends _$UserBookingCopyWithImpl<$Res>
-    implements _$UserBookingCopyWith<$Res> {
-  __$UserBookingCopyWithImpl(
-      _UserBooking _value, $Res Function(_UserBooking) _then)
-      : super(_value, (v) => _then(v as _UserBooking));
+class __$BookerCopyWithImpl<$Res> extends _$BookerCopyWithImpl<$Res>
+    implements _$BookerCopyWith<$Res> {
+  __$BookerCopyWithImpl(_Booker _value, $Res Function(_Booker) _then)
+      : super(_value, (v) => _then(v as _Booker));
 
   @override
-  _UserBooking get _value => super._value as _UserBooking;
+  _Booker get _value => super._value as _Booker;
 
   @override
   $Res call({
@@ -147,7 +142,7 @@ class __$UserBookingCopyWithImpl<$Res> extends _$UserBookingCopyWithImpl<$Res>
     Object? type = freezed,
     Object? note = freezed,
   }) {
-    return _then(_UserBooking(
+    return _then(_Booker(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -178,8 +173,8 @@ class __$UserBookingCopyWithImpl<$Res> extends _$UserBookingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserBooking extends _UserBooking {
-  const _$_UserBooking(
+class _$_Booker extends _Booker {
+  const _$_Booker(
       {required this.name,
       required this.phone,
       required this.startPoint,
@@ -203,14 +198,14 @@ class _$_UserBooking extends _UserBooking {
 
   @override
   String toString() {
-    return 'UserBooking(name: $name, phone: $phone, startPoint: $startPoint, endPoint: $endPoint, type: $type, note: $note)';
+    return 'Booker(name: $name, phone: $phone, startPoint: $startPoint, endPoint: $endPoint, type: $type, note: $note)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserBooking &&
+            other is _Booker &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality()
@@ -232,19 +227,19 @@ class _$_UserBooking extends _UserBooking {
 
   @JsonKey(ignore: true)
   @override
-  _$UserBookingCopyWith<_UserBooking> get copyWith =>
-      __$UserBookingCopyWithImpl<_UserBooking>(this, _$identity);
+  _$BookerCopyWith<_Booker> get copyWith =>
+      __$BookerCopyWithImpl<_Booker>(this, _$identity);
 }
 
-abstract class _UserBooking extends UserBooking {
-  const factory _UserBooking(
+abstract class _Booker extends Booker {
+  const factory _Booker(
       {required String name,
       required String phone,
       required String startPoint,
       required String endPoint,
       required String type,
-      String? note}) = _$_UserBooking;
-  const _UserBooking._() : super._();
+      String? note}) = _$_Booker;
+  const _Booker._() : super._();
 
   @override
   String get name;
@@ -260,6 +255,5 @@ abstract class _UserBooking extends UserBooking {
   String? get note;
   @override
   @JsonKey(ignore: true)
-  _$UserBookingCopyWith<_UserBooking> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$BookerCopyWith<_Booker> get copyWith => throw _privateConstructorUsedError;
 }

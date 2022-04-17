@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_riverpod/core/route/route.dart';
+import 'package:flutter_boilerplate_riverpod/domain/entities/booker.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/ticket_booking/ticket_booking_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -139,12 +140,22 @@ class UserBookingPage extends HookConsumerWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.all(18),
                   child: Consumer(builder: (ctx, ref, _) {
-                    final isFormError = ref.watch(userFormProvider).isFormError;
+                    final state = ref.watch(userFormProvider);
                     return ElevatedButton(
                       child: const Text('Xác nhận'),
-                      onPressed: isFormError
+                      onPressed: state.isFormError
                           ? () {
-                              context.router.push(const ConfirmBookingRoute());
+                              context.router.push(
+                                ConfirmBookingRoute(
+                                  booker: Booker(
+                                    name: state.name,
+                                    phone: state.phone,
+                                    startPoint: state.startPoint,
+                                    endPoint: state.endPoint,
+                                    type: 'Tại điểm đón',
+                                  ),
+                                ),
+                              );
                             }
                           : null,
                     );
