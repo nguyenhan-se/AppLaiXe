@@ -59,6 +59,21 @@ class AppRouter extends _i2.RootStackRouter {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.ConfirmBookingPage());
     },
+    LoginRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.LoginPage());
+    },
+    ForgotPasswordRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.ForgotPasswordPage());
+    },
+    RatingRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.RatingPage());
+    },
+    PickAndDropRoute.name: (routeData) {
+      return _i2.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i1.PickAndDropPage());
     UserBookingRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.UserBookingPage());
@@ -70,6 +85,15 @@ class AppRouter extends _i2.RootStackRouter {
         _i2.RouteConfig(SplashRoute.name, path: '/'),
         _i2.RouteConfig(AppStartRoute.name, path: '/start'),
         _i2.RouteConfig(SignInRoute.name, path: '/signin'),
+        _i2.RouteConfig(ChairBookingRoute.name, path: '/chair-booking'),
+        _i2.RouteConfig(PassengerRoute.name, path: '/passenger-page'),
+        _i2.RouteConfig(ConfirmBookingRoute.name,
+            path: '/confirm-booking-page'),
+        _i2.RouteConfig(LoginRoute.name, path: '/login-test-page'),
+        _i2.RouteConfig(ForgotPasswordRoute.name,
+            path: '/forgot-password-page'),
+        _i2.RouteConfig(RatingRoute.name, path: '/rating-page'),
+        _i2.RouteConfig(PickAndDropRoute.name, path: '/pick-and-drop-page')
         _i2.RouteConfig(HomeRoute.name, path: '/home', children: [
           _i2.RouteConfig(MainsTab.name,
               path: 'mains',
@@ -180,6 +204,37 @@ class ConfirmBookingRoute extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [_i1.LoginPage]
+class LoginRoute extends _i2.PageRouteInfo<void> {
+  const LoginRoute() : super(LoginRoute.name, path: '/login-test-page');
+
+  static const String name = 'LoginRoute';
+}
+
+/// generated route for
+/// [_i1.ForgotPasswordPage]
+class ForgotPasswordRoute extends _i2.PageRouteInfo<void> {
+  const ForgotPasswordRoute()
+      : super(ForgotPasswordRoute.name, path: '/forgot-password-page');
+
+  static const String name = 'ForgotPasswordRoute';
+}
+
+/// generated route for
+/// [_i1.RatingPage]
+class RatingRoute extends _i2.PageRouteInfo<void> {
+  const RatingRoute() : super(RatingRoute.name, path: '/rating-page');
+
+  static const String name = 'RatingRoute';
+}
+
+/// generated route for
+/// [_i1.PickAndDropPage]
+class PickAndDropRoute extends _i2.PageRouteInfo<void> {
+  const PickAndDropRoute()
+      : super(PickAndDropRoute.name, path: '/pick-and-drop-page');
+
+  static const String name = 'PickAndDropRoute';
 /// [_i1.UserBookingPage]
 class UserBookingRoute extends _i2.PageRouteInfo<void> {
   const UserBookingRoute()
