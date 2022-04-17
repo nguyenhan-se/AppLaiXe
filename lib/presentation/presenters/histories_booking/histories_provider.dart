@@ -34,7 +34,7 @@ class _SeatBookingController extends StateNotifier<HistoriesState> {
   void historyAdded(HistoryBooking history) {
     state = state.copyWith(
       historiesBooking: List<HistoryBooking>.from(state.historiesBooking)
-        ..add(history),
+        ..insert(0, history),
     );
   }
 }

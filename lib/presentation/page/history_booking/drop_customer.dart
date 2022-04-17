@@ -40,22 +40,23 @@ class DropCustomer extends StatelessWidget {
                 '${oCcy.format(historyBooking.totalPrice)} VNĐ',
                 style: const TextStyle(color: Colors.red, fontSize: 16),
               ),
-              Text(
-                historyBooking.seats.map((item) => item.seatNumber).toString(),
-                style: const TextStyle(fontSize: 16),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              const Text('Ghế:'),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  historyBooking.seats.map((item) => item.seatNames).join(', '),
+                  style: const TextStyle(fontSize: 16),
+                ),
               ),
             ],
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Divider(
-            height: 2,
-            color: Colors.black,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+          const Divider(height: 2, color: Colors.black),
+          const SizedBox(height: 10),
         ],
       ),
     );

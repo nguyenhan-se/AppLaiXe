@@ -1,12 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_riverpod/core/route/route.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
-    show appConfigProvider, authProvider, todosProvider;
 // Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-final counterProvider = StateProvider((ref) => 0);
 
 class HomePage extends StatefulHookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,14 +15,13 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   void initState() {
     super.initState();
-    ref.read(todosProvider.notifier).todoLoaded();
   }
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
-        MainsTab(),
+        CarBookingTab(),
         HistoryTab(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -45,24 +40,6 @@ class _HomePageState extends ConsumerState<HomePage> {
           ],
         );
       },
-    );
-  }
-}
-
-class TodosResponse extends HookConsumerWidget {
-  const TodosResponse({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final todoProvider = ref.watch(todosProvider);
-    return todoProvider.state.when(
-      error: (err, sr) => const Text('err.message'),
-      loading: () => const CircularProgressIndicator(),
-      data: (data) => ListView.separated(
-        itemBuilder: (_, index) => Text(data[index].title),
-        separatorBuilder: (_, __) => const Divider(),
-        itemCount: data.length,
-      ),
     );
   }
 }

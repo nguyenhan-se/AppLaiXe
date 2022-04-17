@@ -6,9 +6,9 @@ import 'passenger/passenger_page.dart';
 import 'user_booking/user_booking_page.dart';
 
 const carBookingRoutes = AutoRoute(
-  path: 'mains',
+  path: 'main',
   page: EmptyRouterPage,
-  name: 'MainsTab',
+  name: 'CarBookingTab',
   children: [
     AutoRoute(page: PassengerPage, path: ''),
     AutoRoute(page: ChairBookingPage, path: 'chair-booking'),
