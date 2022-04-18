@@ -29,6 +29,8 @@ final List<HistoryBooking> listHistoryBooking = [
     seats: const [
       Seat(seatRow: 'A', seatNumber: 5),
     ],
+    isCheckPhoneCall: false,
+    isCheckGetinCar: false,
   ),
   HistoryBooking(
     user: const Booker(
@@ -53,6 +55,8 @@ final List<HistoryBooking> listHistoryBooking = [
       Seat(seatRow: 'C', seatNumber: 3),
       Seat(seatRow: 'C', seatNumber: 4),
     ],
+    isCheckPhoneCall: false,
+    isCheckGetinCar: false,
   ),
   HistoryBooking(
     user: const Booker(
@@ -78,6 +82,8 @@ final List<HistoryBooking> listHistoryBooking = [
       Seat(seatRow: 'D', seatNumber: 1),
       Seat(seatRow: 'E', seatNumber: 1),
     ],
+    isCheckPhoneCall: false,
+    isCheckGetinCar: false,
   ),
 ];
 
@@ -88,5 +94,15 @@ class GetHistoryBookingsUseCase
   @override
   call({String? params}) {
     return listHistoryBooking.toList();
+  }
+}
+
+class GetOneHistoryBookingUseCase implements UseCase<HistoryBooking, String> {
+  GetOneHistoryBookingUseCase();
+
+  @override
+  call({String? params}) {
+    return listHistoryBooking
+        .singleWhere((element) => element.user.startPoint == params);
   }
 }

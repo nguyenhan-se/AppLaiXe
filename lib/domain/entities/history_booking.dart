@@ -16,14 +16,17 @@ class HistoryBooking with _$HistoryBooking {
     required Destination destination,
     required List<Seat> seats,
     String? note,
+    required bool isCheckPhoneCall,
+    required bool isCheckGetinCar,
   }) = _HistoryBooking;
 
   factory HistoryBooking.empty() => HistoryBooking(
-        user: Booker.empty(),
-        departure: DateTime.now(),
-        destination: Destination.empty(),
-        seats: [],
-      );
+      user: Booker.empty(),
+      departure: DateTime.now(),
+      destination: Destination.empty(),
+      seats: [],
+      isCheckPhoneCall: false,
+      isCheckGetinCar: false);
 
   get totalPrice => destination.price * seats.length;
 }

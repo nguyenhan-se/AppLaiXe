@@ -4,7 +4,6 @@ import 'package:flutter_boilerplate_riverpod/domain/entities/booker.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/histories_booking/histories_provider.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/ticket_booking/ticket_booking_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'ticket_view.dart';
@@ -43,6 +42,8 @@ class ConfirmBookingPage extends HookConsumerWidget {
                         departure: ticketBookingState.departure,
                         destination: ticketBookingState.destination,
                         seats: ticketBookingState.seats,
+                        isCheckPhoneCall: false,
+                        isCheckGetinCar: false,
                       );
 
                       ref

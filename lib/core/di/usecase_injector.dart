@@ -20,4 +20,7 @@ Future<void> setupUseCaseDependencies(GetIt getIt) async {
 
   getIt.registerSingleton<GetHistoryBookingsUseCase>(
       GetHistoryBookingsUseCase());
+
+  getIt.registerSingleton<GetOneHistoryBookingUseCase>(
+      GetOneHistoryBookingUseCase());
 }

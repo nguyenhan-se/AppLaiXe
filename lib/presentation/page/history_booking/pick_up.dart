@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/histories_booking/histories_provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PickUp extends StatefulWidget {
   final HistoryBooking historyBooking;
-  const PickUp({
-    Key? key,
-    required this.historyBooking,
-  }) : super(key: key);
+  const PickUp({Key? key, required this.historyBooking}) : super(key: key);
 
   @override
   _PickUpState createState() => _PickUpState();
 }
 
 class _PickUpState extends State<PickUp> {
-  bool _disableButtonPhone = false;
-  bool _disableButtonCar = false;
   final oCcy = NumberFormat("#,##0", "en_US");
 
   @override
@@ -60,58 +57,69 @@ class _PickUpState extends State<PickUp> {
                   ),
                 ],
               ),
-              IconButton(
-                onPressed: _disableButtonPhone || _disableButtonCar
-                    ? null
-                    : () => showDialogAlert(
-                          context,
-                          'Xác nhận ĐÃ GỌI',
-                          widget.historyBooking,
-                          () => {
-                            setState(
-                              () {
-                                _disableButtonPhone = true;
-                              },
-                            ),
-                            Navigator.of(context).pop()
-                          },
+              Consumer(
+                builder: (ctx, ref, _) {
+                  return Row(
+                    children: [
+                      IconButton(
+                        onPressed: widget.historyBooking.isCheckPhoneCall ||
+                                widget.historyBooking.isCheckGetinCar
+                            ? null
+                            : () => showDialogAlert(
+                                  context,
+                                  'Xác nhận ĐÃ GỌI',
+                                  widget.historyBooking,
+                                  () => {
+                                    ref
+                                        .read(historiesProvider.notifier)
+                                        .updateSelectedPhoneHistory(widget
+                                            .historyBooking.user.startPoint),
+                                    Navigator.of(context).pop()
+                                  },
+                                ),
+                        icon: const Icon(Icons.phone_enabled),
+                      ),
+                      IconButton(
+                        onPressed: widget.historyBooking.isCheckPhoneCall ||
+                                widget.historyBooking.isCheckGetinCar
+                            ? null
+                            : () => showDialogAlert(
+                                  context,
+                                  'Xác nhận KHÔNG NGHE',
+                                  widget.historyBooking,
+                                  () => {
+                                    ref
+                                        .read(historiesProvider.notifier)
+                                        .updateSelectedPhoneHistory(widget
+                                            .historyBooking.user.startPoint),
+                                    Navigator.of(context).pop()
+                                  },
+                                ),
+                        icon: const Icon(Icons.phone_disabled),
+                      ),
+                      IconButton(
+                        onPressed: widget.historyBooking.isCheckGetinCar
+                            ? null
+                            : () => showDialogAlert(
+                                  context,
+                                  'Xác nhận ĐÃ LÊN',
+                                  widget.historyBooking,
+                                  () => {
+                                    ref
+                                        .read(historiesProvider.notifier)
+                                        .updateSelectedGetInCarHistory(widget
+                                            .historyBooking.user.startPoint),
+                                    Navigator.of(context).pop()
+                                  },
+                                ),
+                        icon: const Icon(
+                          Icons.directions_car,
                         ),
-                icon: const Icon(Icons.phone_enabled),
+                      )
+                    ],
+                  );
+                },
               ),
-              IconButton(
-                  onPressed: _disableButtonPhone || _disableButtonCar
-                      ? null
-                      : () => showDialogAlert(
-                            context,
-                            'Xác nhận KHÔNG NGHE',
-                            widget.historyBooking,
-                            () => {
-                              setState(
-                                () {
-                                  _disableButtonPhone = true;
-                                },
-                              ),
-                              Navigator.of(context).pop()
-                            },
-                          ),
-                  icon: const Icon(Icons.phone_disabled)),
-              IconButton(
-                  onPressed: _disableButtonCar
-                      ? null
-                      : () => showDialogAlert(
-                            context,
-                            'Xác nhận ĐÃ LÊN',
-                            widget.historyBooking,
-                            () => {
-                              setState(
-                                () {
-                                  _disableButtonCar = true;
-                                },
-                              ),
-                              Navigator.of(context).pop()
-                            },
-                          ),
-                  icon: const Icon(Icons.directions_car)),
             ],
           ),
           const SizedBox(height: 10),

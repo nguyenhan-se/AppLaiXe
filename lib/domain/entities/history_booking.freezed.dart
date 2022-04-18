@@ -22,13 +22,17 @@ class _$HistoryBookingTearOff {
       required DateTime departure,
       required Destination destination,
       required List<Seat> seats,
-      String? note}) {
+      String? note,
+      required bool isCheckPhoneCall,
+      required bool isCheckGetinCar}) {
     return _HistoryBooking(
       user: user,
       departure: departure,
       destination: destination,
       seats: seats,
       note: note,
+      isCheckPhoneCall: isCheckPhoneCall,
+      isCheckGetinCar: isCheckGetinCar,
     );
   }
 }
@@ -43,6 +47,8 @@ mixin _$HistoryBooking {
   Destination get destination => throw _privateConstructorUsedError;
   List<Seat> get seats => throw _privateConstructorUsedError;
   String? get note => throw _privateConstructorUsedError;
+  bool get isCheckPhoneCall => throw _privateConstructorUsedError;
+  bool get isCheckGetinCar => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HistoryBookingCopyWith<HistoryBooking> get copyWith =>
@@ -59,7 +65,9 @@ abstract class $HistoryBookingCopyWith<$Res> {
       DateTime departure,
       Destination destination,
       List<Seat> seats,
-      String? note});
+      String? note,
+      bool isCheckPhoneCall,
+      bool isCheckGetinCar});
 
   $BookerCopyWith<$Res> get user;
   $DestinationCopyWith<$Res> get destination;
@@ -81,6 +89,8 @@ class _$HistoryBookingCopyWithImpl<$Res>
     Object? destination = freezed,
     Object? seats = freezed,
     Object? note = freezed,
+    Object? isCheckPhoneCall = freezed,
+    Object? isCheckGetinCar = freezed,
   }) {
     return _then(_value.copyWith(
       user: user == freezed
@@ -103,6 +113,14 @@ class _$HistoryBookingCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      isCheckPhoneCall: isCheckPhoneCall == freezed
+          ? _value.isCheckPhoneCall
+          : isCheckPhoneCall // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCheckGetinCar: isCheckGetinCar == freezed
+          ? _value.isCheckGetinCar
+          : isCheckGetinCar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -133,7 +151,9 @@ abstract class _$HistoryBookingCopyWith<$Res>
       DateTime departure,
       Destination destination,
       List<Seat> seats,
-      String? note});
+      String? note,
+      bool isCheckPhoneCall,
+      bool isCheckGetinCar});
 
   @override
   $BookerCopyWith<$Res> get user;
@@ -159,6 +179,8 @@ class __$HistoryBookingCopyWithImpl<$Res>
     Object? destination = freezed,
     Object? seats = freezed,
     Object? note = freezed,
+    Object? isCheckPhoneCall = freezed,
+    Object? isCheckGetinCar = freezed,
   }) {
     return _then(_HistoryBooking(
       user: user == freezed
@@ -181,6 +203,14 @@ class __$HistoryBookingCopyWithImpl<$Res>
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
+      isCheckPhoneCall: isCheckPhoneCall == freezed
+          ? _value.isCheckPhoneCall
+          : isCheckPhoneCall // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCheckGetinCar: isCheckGetinCar == freezed
+          ? _value.isCheckGetinCar
+          : isCheckGetinCar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -193,7 +223,9 @@ class _$_HistoryBooking extends _HistoryBooking {
       required this.departure,
       required this.destination,
       required this.seats,
-      this.note})
+      this.note,
+      required this.isCheckPhoneCall,
+      required this.isCheckGetinCar})
       : super._();
 
   @override
@@ -206,10 +238,14 @@ class _$_HistoryBooking extends _HistoryBooking {
   final List<Seat> seats;
   @override
   final String? note;
+  @override
+  final bool isCheckPhoneCall;
+  @override
+  final bool isCheckGetinCar;
 
   @override
   String toString() {
-    return 'HistoryBooking(user: $user, departure: $departure, destination: $destination, seats: $seats, note: $note)';
+    return 'HistoryBooking(user: $user, departure: $departure, destination: $destination, seats: $seats, note: $note, isCheckPhoneCall: $isCheckPhoneCall, isCheckGetinCar: $isCheckGetinCar)';
   }
 
   @override
@@ -222,7 +258,11 @@ class _$_HistoryBooking extends _HistoryBooking {
             const DeepCollectionEquality()
                 .equals(other.destination, destination) &&
             const DeepCollectionEquality().equals(other.seats, seats) &&
-            const DeepCollectionEquality().equals(other.note, note));
+            const DeepCollectionEquality().equals(other.note, note) &&
+            const DeepCollectionEquality()
+                .equals(other.isCheckPhoneCall, isCheckPhoneCall) &&
+            const DeepCollectionEquality()
+                .equals(other.isCheckGetinCar, isCheckGetinCar));
   }
 
   @override
@@ -232,7 +272,9 @@ class _$_HistoryBooking extends _HistoryBooking {
       const DeepCollectionEquality().hash(departure),
       const DeepCollectionEquality().hash(destination),
       const DeepCollectionEquality().hash(seats),
-      const DeepCollectionEquality().hash(note));
+      const DeepCollectionEquality().hash(note),
+      const DeepCollectionEquality().hash(isCheckPhoneCall),
+      const DeepCollectionEquality().hash(isCheckGetinCar));
 
   @JsonKey(ignore: true)
   @override
@@ -246,7 +288,9 @@ abstract class _HistoryBooking extends HistoryBooking {
       required DateTime departure,
       required Destination destination,
       required List<Seat> seats,
-      String? note}) = _$_HistoryBooking;
+      String? note,
+      required bool isCheckPhoneCall,
+      required bool isCheckGetinCar}) = _$_HistoryBooking;
   const _HistoryBooking._() : super._();
 
   @override
@@ -259,6 +303,10 @@ abstract class _HistoryBooking extends HistoryBooking {
   List<Seat> get seats;
   @override
   String? get note;
+  @override
+  bool get isCheckPhoneCall;
+  @override
+  bool get isCheckGetinCar;
   @override
   @JsonKey(ignore: true)
   _$HistoryBookingCopyWith<_HistoryBooking> get copyWith =>

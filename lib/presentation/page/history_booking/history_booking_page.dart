@@ -18,6 +18,7 @@ class HistoryBookingPage extends HookConsumerWidget {
       sumTotalPrice += historyBooking.totalPrice;
       sumCustomer += historyBooking.seats.length;
     }
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
