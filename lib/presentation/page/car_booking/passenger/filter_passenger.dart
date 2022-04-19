@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/authentication/auth_provider.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 // Project imports:
+import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/authentication/auth_provider.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/widgets/widgets.dart';
 
 final List<Destination> destinations = [

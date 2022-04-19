@@ -1,24 +1,24 @@
 // Dart imports:
 import 'dart:math';
 
-// Package imports:
-import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/histories_booking/histories_provider.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 // Project imports:
 import 'package:flutter_boilerplate_riverpod/core/utils/extensions/context_extensions.dart';
+import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
-    show seatBookingProvider;
-
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/histories_booking/histories_provider.dart';
 import 'custom_chips_list.dart';
 import 'purchase_seats_button.dart';
 import 'seat_color_indicators.dart';
 import 'seats_area.dart';
+
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
+    show seatBookingProvider;
 
 class ChairBookingPage extends HookConsumerWidget {
   const ChairBookingPage({

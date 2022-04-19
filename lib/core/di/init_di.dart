@@ -1,8 +1,5 @@
 // Package imports:
 import 'package:dio/dio.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_boilerplate_riverpod/domain/usecases/destination/destination_usecase.dart';
-import 'package:flutter_boilerplate_riverpod/domain/usecases/histories/histories_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +12,8 @@ import 'package:flutter_boilerplate_riverpod/data/repositories/post_repository_i
 import 'package:flutter_boilerplate_riverpod/domain/repositories/auth_repository.dart';
 import 'package:flutter_boilerplate_riverpod/domain/repositories/todo_repository.dart';
 import 'package:flutter_boilerplate_riverpod/domain/usecases/auth/auth_usecase.dart';
+import 'package:flutter_boilerplate_riverpod/domain/usecases/destination/destination_usecase.dart';
+import 'package:flutter_boilerplate_riverpod/domain/usecases/histories/histories_usecase.dart';
 import 'package:flutter_boilerplate_riverpod/domain/usecases/todo/todo_usecase.dart';
 import 'module/local_module.dart';
 import 'module/network_module.dart';
@@ -35,8 +34,6 @@ Future<void> initializeDependencies() async {
       SharedPreferenceHelper(await getIt.getAsync<SharedPreferences>()));
   getIt.registerSingleton<Dio>(
       NetworkModule.provideDio(getIt<SharedPreferenceHelper>()));
-
-  getIt.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);
 
   setupApiDependencies(getIt);
 

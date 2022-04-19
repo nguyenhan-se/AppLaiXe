@@ -1,9 +1,14 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/histories_booking/histories_provider.dart';
+
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+// Project imports:
+import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/histories_booking/histories_provider.dart';
 
 class PickUp extends StatefulWidget {
   final HistoryBooking historyBooking;

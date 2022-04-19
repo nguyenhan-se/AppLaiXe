@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
 
 class BoxDestination extends StatelessWidget {

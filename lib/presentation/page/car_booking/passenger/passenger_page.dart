@@ -1,9 +1,13 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+// Project imports:
 import 'package:flutter_boilerplate_riverpod/core/route/route.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart';
 import 'package:flutter_boilerplate_riverpod/presentation/widgets/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import 'filter_passenger.dart';
 
 class PassengerPage extends HookConsumerWidget {

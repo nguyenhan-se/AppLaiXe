@@ -1,10 +1,10 @@
 // Package imports:
-import 'package:flutter_boilerplate_riverpod/core/di/init_di.dart';
-import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
-import 'package:flutter_boilerplate_riverpod/domain/usecases/histories/histories_usecase.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
+import 'package:flutter_boilerplate_riverpod/core/di/init_di.dart';
+import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
+import 'package:flutter_boilerplate_riverpod/domain/usecases/histories/histories_usecase.dart';
 import 'histories_state.dart';
 
 final historiesProvider =

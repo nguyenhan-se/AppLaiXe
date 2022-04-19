@@ -1,13 +1,17 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../components/forgot_password.dart';
-import '../components/rounded_input_field.dart';
-import '../components/rounded_password_field.dart';
+// Project imports:
+import '../widgets/forgot_password.dart';
+import '../widgets/rounded_input_field.dart';
+import '../widgets/rounded_password_field.dart';
 import 'background.dart';
 
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
-    show AuthState, authProvider;
+    show authProvider;
 
 class Body extends HookConsumerWidget {
   const Body({
@@ -17,7 +21,6 @@ class Body extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final formGlobalKey = GlobalKey<FormState>();
-
     Size size = MediaQuery.of(context).size;
     return Form(
       key: formGlobalKey,
@@ -55,7 +58,7 @@ class Body extends HookConsumerWidget {
                             formGlobalKey.currentState!.save();
                             ref
                                 .read(authProvider.notifier)
-                                .login('hungnt.se@gmail.com', 'campaign4');
+                                .login('email-dumy', 'password');
                           }
                         },
                         style: ElevatedButton.styleFrom(

@@ -1,6 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:intl/intl.dart';
 
+// Project imports:
 import '../../../domain/entities/history_booking.dart';
 
 class DropCustomer extends StatelessWidget {

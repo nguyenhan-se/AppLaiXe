@@ -10,10 +10,6 @@ Future<void> setupUseCaseDependencies(GetIt getIt) async {
       SignInUseCase(getIt<IAuthRepository>()));
   getIt.registerSingleton<SignOutUseCase>(
       SignOutUseCase(getIt<IAuthRepository>()));
-  getIt.registerSingleton<AuthChangeUseCase>(
-      AuthChangeUseCase(getIt<IAuthRepository>()));
-  getIt.registerSingleton<GetUserUseCase>(
-      GetUserUseCase(getIt<IAuthRepository>()));
 
   getIt.registerSingleton<GetDestinationsByCodeUseCase>(
       GetDestinationsByCodeUseCase());

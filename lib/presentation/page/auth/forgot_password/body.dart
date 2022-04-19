@@ -1,8 +1,12 @@
-import 'package:auto_route/auto_route.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:auto_route/auto_route.dart';
+
+// Project imports:
 import '../../../../../core/route/router.gr.dart';
-import '../components/rounded_input_field.dart';
+import '../widgets/rounded_input_field.dart';
 import 'background.dart';
 
 class Body extends StatelessWidget {

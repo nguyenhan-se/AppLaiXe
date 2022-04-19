@@ -10,11 +10,18 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i2;
+// Flutter imports:
 import 'package:flutter/material.dart' as _i7;
+import 'package:flutter/widgets.dart' as _i8;
 
-import '../../domain/entities/booker.dart' as _i9;
-import '../../domain/entities/destination.dart' as _i8;
+// Package imports:
+import 'package:auto_route/auto_route.dart' as _i2;
+
+// Project imports:
+import '../../domain/entities/booker.dart' as _i10;
+import '../../domain/entities/destination.dart' as _i9;
+import '../../presentation/page/pages.dart' as _i1;
+
 import '../../presentation/page/car_booking/chair_booking/chair_booking_page.dart'
     as _i4;
 import '../../presentation/page/car_booking/confirm_booking/confirm_booking.dart'
@@ -23,7 +30,6 @@ import '../../presentation/page/car_booking/passenger/passenger_page.dart'
     as _i3;
 import '../../presentation/page/car_booking/user_booking/user_booking_page.dart'
     as _i6;
-import '../../presentation/page/pages.dart' as _i1;
 
 class AppRouter extends _i2.RootStackRouter {
   AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
@@ -179,7 +185,7 @@ class PassengerRoute extends _i2.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.ChairBookingPage]
 class ChairBookingRoute extends _i2.PageRouteInfo<ChairBookingRouteArgs> {
-  ChairBookingRoute({_i7.Key? key, required _i8.Destination destination})
+  ChairBookingRoute({_i8.Key? key, required _i9.Destination destination})
       : super(ChairBookingRoute.name,
             path: 'chair-booking',
             args: ChairBookingRouteArgs(key: key, destination: destination));
@@ -190,9 +196,9 @@ class ChairBookingRoute extends _i2.PageRouteInfo<ChairBookingRouteArgs> {
 class ChairBookingRouteArgs {
   const ChairBookingRouteArgs({this.key, required this.destination});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
-  final _i8.Destination destination;
+  final _i9.Destination destination;
 
   @override
   String toString() {
@@ -203,7 +209,7 @@ class ChairBookingRouteArgs {
 /// generated route for
 /// [_i5.ConfirmBookingPage]
 class ConfirmBookingRoute extends _i2.PageRouteInfo<ConfirmBookingRouteArgs> {
-  ConfirmBookingRoute({_i7.Key? key, required _i9.Booker booker})
+  ConfirmBookingRoute({_i8.Key? key, required _i10.Booker booker})
       : super(ConfirmBookingRoute.name,
             path: 'confirm-booking-page',
             args: ConfirmBookingRouteArgs(key: key, booker: booker));
@@ -214,9 +220,9 @@ class ConfirmBookingRoute extends _i2.PageRouteInfo<ConfirmBookingRouteArgs> {
 class ConfirmBookingRouteArgs {
   const ConfirmBookingRouteArgs({this.key, required this.booker});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
-  final _i9.Booker booker;
+  final _i10.Booker booker;
 
   @override
   String toString() {

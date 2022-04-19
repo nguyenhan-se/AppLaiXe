@@ -1,9 +1,8 @@
-// Package imports:
+// Project imports:
+import 'package:flutter_boilerplate_riverpod/domain/entities/booker.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/history_booking.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
-import 'package:flutter_boilerplate_riverpod/domain/entities/booker.dart';
-
 import '../usecase.dart';
 
 final List<HistoryBooking> listHistoryBooking = [

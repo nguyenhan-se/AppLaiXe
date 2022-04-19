@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate_riverpod/presentation/presenters/authentication/auth_provider.dart';
+
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+// Project imports:
+import 'package:flutter_boilerplate_riverpod/presentation/presenters/authentication/auth_provider.dart';
 
 class Background extends HookConsumerWidget {
   final Widget? child;

@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import 'package:flutter_boilerplate_riverpod/core/route/route.dart';
+import 'package:flutter_boilerplate_riverpod/presentation/page/auth/login/login_page.dart';
 
 import 'package:flutter_boilerplate_riverpod/presentation/presenters/presenters.dart'
     show AuthState, authProvider;
@@ -35,7 +36,6 @@ class _AppStartPageState extends ConsumerState<AppStartPage> {
         },
         unauthenticated: () {
           context.router.popUntilRoot();
-          context.router.push(const LoginRoute());
         },
         failure: (failure) {
           showDialog(
@@ -54,8 +54,15 @@ class _AppStartPageState extends ConsumerState<AppStartPage> {
         },
       );
     });
-    return const Scaffold(
-      body: SizedBox.shrink(),
+    final state = ref.watch(authProvider);
+
+    return Scaffold(
+      body: SafeArea(
+        child: state.maybeWhen(
+          unauthenticated: () => const LoginPage(),
+          orElse: () => const SizedBox.shrink(),
+        ),
+      ),
     );
   }
 }

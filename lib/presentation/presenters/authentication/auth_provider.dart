@@ -2,58 +2,42 @@
 import 'dart:async';
 
 // Package imports:
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import 'package:flutter_boilerplate_riverpod/core/di/init_di.dart';
 import 'package:flutter_boilerplate_riverpod/core/logics/error_handle/error_handle.dart';
+import 'package:flutter_boilerplate_riverpod/domain/entities/user.dart';
 import 'package:flutter_boilerplate_riverpod/domain/usecases/auth/auth_usecase.dart';
 
 part 'auth_provider.freezed.dart';
 part 'auth_state.dart';
 
-final authProvider = StateNotifierProvider<_AuthController, AuthState>(
+final authProvider = StateNotifierProvider<AuthController, AuthState>(
   (ref) {
-    return _AuthController(
-      authChangeUseCase: getIt<AuthChangeUseCase>(),
+    return AuthController(
       signInUseCase: getIt<SignInUseCase>(),
       signOutUseCase: getIt<SignOutUseCase>(),
     );
   },
 );
 
-class _AuthController extends StateNotifier<AuthState> {
-  late AuthChangeUseCase _authChangeUseCase;
+class AuthController extends StateNotifier<AuthState> {
   late SignInUseCase _signInUseCase;
   late SignOutUseCase _signOutUseCase;
 
-  StreamSubscription<User?>? _authStateChangeSubscription;
-
-  _AuthController({
-    required AuthChangeUseCase authChangeUseCase,
+  AuthController({
     required SignInUseCase signInUseCase,
     required SignOutUseCase signOutUseCase,
-  }) : super(AuthState.unknown()) {
-    _authChangeUseCase = authChangeUseCase;
+  }) : super(const AuthState.unauthenticated()) {
     _signInUseCase = signInUseCase;
     _signOutUseCase = signOutUseCase;
-
-    _authStateChangeSubscription?.cancel();
-    _authStateChangeSubscription = _authChangeUseCase().listen((user) {
-      if (user != null) {
-        state = AuthState.authenticated(user: user);
-      } else {
-        state = const AuthState.unauthenticated();
-      }
-    });
   }
 
-  @override
-  void dispose() {
-    _authStateChangeSubscription?.cancel();
-    super.dispose();
+  Future<void> appStarted() async {
+    state = AuthState.authenticated(
+        user: User(email: 'aaa', username: 'username', name: 'name'));
   }
 
   Future<void> login(email, password) async {
@@ -62,11 +46,12 @@ class _AuthController extends StateNotifier<AuthState> {
         params: AuthRequestParams(email: email, password: password));
     res.fold(
       (failure) => state = AuthState.failure(failure: failure),
-      (user) => null,
+      (user) => state = AuthState.authenticated(user: user),
     );
   }
 
   Future<void> signOut() async {
     _signOutUseCase();
+    state = const AuthState.unauthenticated();
   }
 }

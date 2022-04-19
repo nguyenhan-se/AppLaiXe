@@ -1,6 +1,5 @@
-// Package imports:
+// Project imports:
 import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
-
 import '../usecase.dart';
 
 final List<Destination> listDestination = [

@@ -89,6 +89,17 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 - [Dio](https://github.com/flutterchina/dio)
 - [Logging](https://github.com/zubairehman/Flogs)
 - [Json Serialization](https://github.com/dart-lang/json_serializable)
+- [Freeze](https://github.com/rrousselGit/freezed)
+- [Retrofit](https://github.com/trevorwang/retrofit.dart/)
+- [riverpod](https://riverpod.dev/)
+
+### Tutorial
+
+- [clean-architecture](https://devmuaz.medium.com/flutter-clean-architecture-series-part-1-d2d4c2e75c47)
+- [i18n setup](https://www.youtube.com/watch?v=icTT6xUYHow)
+- [riverpod](https://www.youtube.com/watch?v=GVspNESSess&t=268s)
+- [example flutter riverpod, firebase](https://www.youtube.com/watch?v=vrPk6LB9bjo&t=327s)
+
 
 ### Folder Structure
 
@@ -110,7 +121,7 @@ lib/
 |- core/
 |- data/
 |- domain/
-|- ui/
+|- presentation/
 |- main.dart
 ```
 
@@ -120,7 +131,7 @@ Now, lets dive into the lib folder which has the main code for the application.
 1- core -  contains the objects that is used all across the application.
 2- data - Contains the data layer of your project, includes directories for local, network and shared pref/cache.
 3- domain - contains the usecases, repositories and entities of the application.
-4- ui — contains the ui-pages and BLoCs of the application.
+4- presentation — contains the ui-pages and manage state of the application.
 5- main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
 ```
 
@@ -131,12 +142,27 @@ contains the objects that is used all across the application.
 ```
 core/
 |- const
+|- di
+|- gen
 |- l10n
-|- theme
+|- logics
+|- route
 |- utils
     |- extension
     |- http
-|- widgets
+```
+
+Now, lets dive into the lib folder which has the main code for the application.
+
+```
+1- const - All the application level constants are defined in this directory with-in their respective files.
+2- di - for injecting our dependencies using the get_it package 
+3- gen - Contains file generate code from `assets`, `i18n`
+4- i18n — Contains multi language
+5- logics — Contains the `theme`, `error_handler`
+6- routes — Contains file contains all the routes for your application.
+7- util — Contains the utilities/common functions of your application.
+
 ```
 
 ### Data
@@ -178,17 +204,27 @@ A use cases are individual classes that depends on those repositories we defined
 We should think about our application as a group of use cases that describe the intent of the applications and group of plugins that give those use cases access to outside world. (Uncle Bob)
 ```
 
-### UI
+### Presentation
 
 This directory contains all the ui of your application. Each screen is located in a separate folder making it easy to combine group of files related to that particular screen. All the screen specific widgets will be placed in `widgets` directory as shown in the example below:
 
 ```
-ui/
-|- login
+presentation/
+|- page
    |- login_screen.dart
    |- widgets
       |- login_form.dart
       |- login_button.dart
+|- presenters
+|- widgets
+```
+
+Now, lets dive into the lib folder which has the main code for the application.
+
+```
+1- presentation -  Contains all the ui of your project, contains sub directory for each screen.
+2- presenters - Contains the state-management(riverpod) of your application, to connect the reactive data of your application with the UI. 
+3- widgets - Contains the Contains the common widgets for your applications. For example, Button, TextField etc.
 ```
 
 ## App Flow Chart

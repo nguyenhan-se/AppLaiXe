@@ -1,8 +1,10 @@
 // Package imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
+import 'package:flutter_boilerplate_riverpod/domain/entities/booker.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/seat.dart';
-import 'package:flutter_boilerplate_riverpod/domain/entities/booker.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'history_booking.freezed.dart';
 

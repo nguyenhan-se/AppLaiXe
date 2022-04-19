@@ -1,7 +1,9 @@
-import 'package:flutter_boilerplate_riverpod/core/di/init_di.dart';
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
+import 'package:flutter_boilerplate_riverpod/core/di/init_di.dart';
 import 'package:flutter_boilerplate_riverpod/domain/entities/destination.dart';
 import 'package:flutter_boilerplate_riverpod/domain/usecases/destination/destination_usecase.dart';
 
